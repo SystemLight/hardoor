@@ -1,0 +1,52 @@
+#sd {
+    .mx(@l,@r) {
+      margin-left: @l;
+      margin-right: @r;
+    }
+
+    .mx(@size) {
+      .mx(@size, @size)
+    }
+
+    .my(@t,@b) {
+      margin-top: @t;
+      margin-bottom: @b;
+    }
+
+    .my(@size) {
+      .my(@size, @size);
+    }
+
+    .px(@l,@r) {
+      padding-left: @l;
+      padding-right: @r;
+    }
+
+    .px(@size) {
+      .px(@size, @size);
+    }
+
+    .py(@l,@r) {
+      padding-left: @l;
+      padding-right: @r;
+    }
+
+    .py(@size) {
+      padding-top: @size;
+      padding-bottom: @size;
+    }
+
+    .wh(@w,@y) {
+      width: @w;
+      height: @y;
+    }
+
+    .wh(@size) {
+      .wh(@size, @size);
+    }
+
+    .text_middle(@height) {
+      height: @height;
+      line-height: @height;
+    }
+}

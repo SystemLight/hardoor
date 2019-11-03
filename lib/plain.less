@@ -1,0 +1,69 @@
+.clear_all() {
+  .mp();
+  li {
+    #sd > .clear_li();
+  }
+  img {
+    #sd > .clear_img();
+  }
+  input {
+    #sd > .clear_input(true);
+  }
+  a {
+    #sd > .clear_a();
+  }
+}
+
+.mp() {
+  body, ol, ul, li, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select {
+    #sd > .clear_mp();
+  }
+}
+
+#sd {
+  .clear_mp() {
+    margin: 0;
+    padding: 0;
+  }
+
+  .clear_li() {
+    list-style: none;
+  }
+
+  .clear_img() {
+    border: 0;
+    vertical-align: top;
+  }
+
+  .clear_input(@all) when (@all=false) {
+    vertical-align: top;
+  }
+
+  .clear_input(@all) when (@all=true) {
+    vertical-align: top;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+  }
+
+  .clear_a() {
+    text-decoration: none
+  }
+
+  .clear_p_wrap() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .clear_fix() {
+    &:after {
+      content: "";
+      display: block;
+      height: 0;
+      visibility: hidden;
+      clear: both;
+    }
+  }
+}

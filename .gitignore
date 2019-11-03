@@ -1,0 +1,5 @@
+# Files ignored by GIT
+.idea/
+build/
+dist/
+node_modules/

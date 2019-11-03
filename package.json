@@ -1,0 +1,24 @@
+{
+  "name": "hardoor",
+  "version": "v0.1.2",
+  "description": "Hardoor is a front-end framework specification.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SystemLight/hardoor.git"
+  },
+  "keywords": [
+    "hardoor",
+    "nodejs"
+  ],
+  "author": "SystemLight",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SystemLight/hardoor/issues"
+  },
+  "homepage": "https://github.com/SystemLight/hardoor#readme",
+  "dependencies": {}
+}

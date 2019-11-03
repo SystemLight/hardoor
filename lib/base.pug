@@ -1,0 +1,62 @@
+include variable
+
+mixin icon(href)
+    link(rel="shortcut icon" href=href)
+    link(rel="bookmark" type="image/x-icon" href=href)
+
+mixin css(href)
+    link(rel="stylesheet" type="text/css" href=href)
+
+mixin js(href)
+    script(type="application/javascript" src=href)
+
+
+doctype html
+html(lang="zh-cmn-Hans")
+    head
+        block title
+            title= title
+
+        //- --path:@@@路径设置口+属性
+        meta(charset="utf-8")
+        meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=1")
+        block meta
+            meta(name="keywords" content=keywords)
+            meta(name="description" content=description)
+
+        //- path:@@@路径设置口+图标
+        block icon
+
+        //- path:@@@路径设置口+样式
+        block css
+
+        //- path:@@@路径设置口+样式拓展
+        block style
+            style.
+
+    body
+
+        //- path:@@@页面区域+头部[#header]
+        header#header
+            block header
+
+        //- path:@@@页面区域+主体[#main]
+        header#main
+            block main
+
+        //- path:@@@页面区域+底部[#footer]
+        header#footer
+            block footer
+
+        //- path:@@@页面区域+拓展[#aside]
+        header#aside
+            block aside
+
+        //- path:@@@路径设置口+脚本
+        block js
+
+        //- path:@@@路径设置口+脚本拓展
+        block script
+            script.
