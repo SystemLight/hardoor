@@ -44,7 +44,7 @@ jobs:
         - echo $TRAVIS_TEST_RESULT
       deploy:
         provider: npm
-        email: 1466335092@qq.com
+        email: "$NPM_EMAIL"
         api_key: "$NPM_TOKEN"
         skip_cleanup: true
         on:
