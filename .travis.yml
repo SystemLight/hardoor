@@ -2,7 +2,7 @@ os: linux
 sudo: required
 language: nodejs
 node_js:
-  - "12"
+  - "8"
 branches:
   only:
     - master
@@ -46,8 +46,8 @@ jobs:
         - echo $TRAVIS_TAG
       deploy:
         provider: npm
-        email: "$NPM_EMAIL"
-        api_key: "$NPM_TOKEN"
+        email: $NPM_EMAIL
+        api_key: $NPM_TOKEN
         skip_cleanup: true
         on:
           tag: true
