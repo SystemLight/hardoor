@@ -20,3 +20,11 @@
 ```
     npm install hardoor -i
 ```
+
+### 备注
+```npm
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1",
+"postversion": "git push --follow-tags"
+},
+```
