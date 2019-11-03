@@ -4,7 +4,7 @@
   "description": "Hardoor is a front-end framework specification.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"hardoor is good\" && exit 0"
   },
   "repository": {
     "type": "git",
