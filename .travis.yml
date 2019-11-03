@@ -2,7 +2,7 @@ os: linux
 sudo: required
 language: nodejs
 node_js:
-  - "8"
+  - "12"
 branches:
   only:
     - master
@@ -33,9 +33,9 @@ jobs:
       before_install:
         - echo before_install
         - npm install -g npm
-        - npm -v
       install:
         - npm install -i
+        - npm -v
       before_script:
         - echo before_script
       script:
