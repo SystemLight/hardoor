@@ -1,61 +1,14 @@
-os: linux
-sudo: required
-language: nodejs
+language: node_js
 node_js:
-  - "12"
-branches:
-  only:
-    - master
-stages:
-  - name: softdoor
-  - name: test
-
-jobs:
-  include:
-    - stage: test
-      name: "test-1"
-      env:
-        - GITHUB=https://github.com/SystemLight/softdoor
-      script:
-        - echo i am test-1
-
-    - stage: test
-      name: "test-2"
-      env:
-        - GITHUB=https://github.com/SystemLight/softdoor
-      script:
-        - echo i am test-2
-
-    - stage: softdoor
-      name: "softdoor-1"
-      env:
-        - GITHUB=https://github.com/SystemLight/madtornado
-      before_install:
-        - echo before_install
-        - npm i -g npm@6.12.0
-        - npm -v
-      install:
-        - npm install -i
-      before_script:
-        - echo before_script
-      script:
-        - echo script
-      after_success:
-        - echo $TRAVIS_TEST_RESULT
-      after_failure:
-        - echo $TRAVIS_TEST_RESULT
-      before_deploy:
-        - echo $TRAVIS_TAG
-      deploy:
-        provider: npm
-        email: 1466335092@qq.com
-        api_key:
-          secure: $NPM_TOKEN
-        skip_cleanup: true
-        on:
-          tag: true
-          branch: master
-        tag: latest
-        condition: '$TRAVIS_TAG =~ ^v[0-9]+.[0-9]+.[0-9]+$'
-      after_script:
-        - echo after_script
+  - '8'
+before_deploy: npm run build
+deploy:
+  provider: npm
+  email: 1466335092@qq.com
+  skip_cleanup: true
+  api_key:
+    secure: $NPM_TOKEN
+  on:
+    tags: true
+    branch: master
+  tag: latest
