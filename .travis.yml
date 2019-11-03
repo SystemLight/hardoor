@@ -32,10 +32,10 @@ jobs:
         - GITHUB=https://github.com/SystemLight/madtornado
       before_install:
         - echo before_install
-        - npm install -g npm
+        - npm i -g npm@6.12.0
+        - npm -v
       install:
         - npm install -i
-        - npm -v
       before_script:
         - echo before_script
       script:
