@@ -12,9 +12,9 @@
 
 ### 资源链接
 
-* 下载文件: [戳这里下载]()
-* 可用版本: [戳这里查看]()
-* GitHub: [被托管在的 GitHub]()
+* 下载文件: [戳这里下载](https://github.com/SystemLight/hardoor.git)
+* 可用版本: [戳这里查看](https://github.com/SystemLight/hardoor/releases)
+* GitHub: [被托管在的 GitHub](https://github.com/SystemLight/hardoor)
 
 ### Hello, world(开始使用)
 ```

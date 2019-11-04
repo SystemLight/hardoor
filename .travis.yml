@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - '8'
+  - '12'
+
 deploy:
   provider: npm
   email: 1466335092@qq.com
