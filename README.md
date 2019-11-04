@@ -1,6 +1,8 @@
 # hardoor
 
 [![Build Status](https://www.travis-ci.org/SystemLight/hardoor.svg?branch=master)](https://www.travis-ci.org/SystemLight/hardoor)
+[![NPM version](https://img.shields.io/npm/v/hardoor.svg)](https://www.npmjs.com/package/hardoor)
+
 
 > * Author：SystemLight  
 > * Contact：https://github.com/SystemLight
@@ -8,7 +10,7 @@
 **hardoor** 是基于NodeJs框架规范，提供最简单的基础模板。
 
 ### 详细文档
-> * 
+> * 暂无
 
 ### 资源链接
 
@@ -24,7 +26,7 @@
 ### 备注
 ```npm
 "scripts": {
-"test": "echo \"Error: no test specified\" && exit 1",
-"postversion": "git push --follow-tags"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postversion": "git push --follow-tags"
 },
 ```
