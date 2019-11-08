@@ -2,7 +2,7 @@ os: linux
 sudo: required
 language: node_js
 node_js:
-  - '12'
+  - '10'
 stages:
   - name: hardoor
   - name: test
@@ -27,13 +27,12 @@ jobs:
       name: "hardoor-2"
       env:
         - GITHUB=https://github.com/SystemLight/hardoor
+      before_deploy:
+        - echo before_deploy
       deploy:
         provider: npm
         email: 1466335092@qq.com
         skip_cleanup: true
-        tag: latest
-        api_key:
-          secure: $NPM_TOKEN
+        api_key: "$NPM_TOKEN"
         on:
           tags: true
-          branch: master
