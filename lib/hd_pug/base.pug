@@ -36,20 +36,27 @@ html(lang="zh-cmn-Hans")
 
     body
 
-        //- path:@@@页面区域+头部[#header]
-        header#header
-            block header
+        //- path:@@@页面区域+包裹[#wrap]
+        div#wrap
 
-        //- path:@@@页面区域+主体[#main]
-        header#main
-            block main
+            block wrap_before
 
-        //- path:@@@页面区域+底部[#footer]
-        header#footer
-            block footer
+            //- path:@@@页面区域+头部[#header]
+            header#header
+                block header
+
+            //- path:@@@页面区域+主体[#main]
+            section#main
+                block main
+
+            //- path:@@@页面区域+底部[#footer]
+            footer#footer
+                block footer
+
+            block wrap_after
 
         //- path:@@@页面区域+拓展[#aside]
-        header#aside
+        aside#aside
             block aside
 
         //- path:@@@路径设置口+脚本
