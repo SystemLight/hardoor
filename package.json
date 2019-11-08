@@ -1,6 +1,6 @@
 {
   "name": "hardoor",
-  "version": "0.1.21",
+  "version": "0.1.14",
   "description": "Hardoor is a front-end framework specification.",
   "main": "index.js",
   "scripts": {
@@ -20,5 +20,9 @@
     "url": "https://github.com/SystemLight/hardoor/issues"
   },
   "homepage": "https://github.com/SystemLight/hardoor#readme",
-  "dependencies": {}
+  "dependencies": {
+    "less": "^3.10.3",
+    "pug": "^2.0.4",
+    "pug-cli": "^1.0.0-alpha6"
+  }
 }
