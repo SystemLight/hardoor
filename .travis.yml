@@ -3,9 +3,6 @@ sudo: required
 language: node_js
 node_js:
   - '12'
-branches:
-  only:
-    - master
 stages:
   - name: hardoor
   - name: test
