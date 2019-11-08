@@ -30,3 +30,8 @@
     "postversion": "git push --follow-tags"
 },
 ```
+
+```
+travis.yml配置时候nodejs不要选太高，
+12版本表示没法正常npm发布，要使用10版本
+```
