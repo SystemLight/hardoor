@@ -1,5 +1,3 @@
-os: linux
-sudo: required
 language: node_js
 node_js:
   - '12'
@@ -25,8 +23,6 @@ jobs:
 
     - stage: hardoor
       name: "hardoor-2"
-      env:
-        - GITHUB=https://github.com/SystemLight/hardoor
       deploy:
         provider: npm
         email: 1466335092@qq.com
