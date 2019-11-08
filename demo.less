@@ -1,0 +1,57 @@
+@import "lib/hd_less/base.less";
+@import "lib/hd_less/plain.less";
+
+//清除一些基础样式
+.clear_all();
+
+//只清除margin，padding
+.mp();
+
+.plain {
+  //清除margin,padding样式
+  #sd > .clear_mp();
+
+  //清除li标签样式
+  #sd > .clear_li();
+
+  //清除img标签样式
+  #sd > .clear_img();
+
+  //清除input标签样式
+  #sd > .clear_input(true);
+  #sd > .clear_input(false);
+
+  //清除a标签样式
+  #sd > .clear_a();
+
+  //清除文字换行
+  #sd > .clear_wrap();
+
+  //清除浮动
+  #sd > .clear_fix();
+}
+
+.base {
+  //设置左右margin
+  #sd > .mx(18px);
+  #sd > .mx(18px, 12px);
+
+  //设置上下margin
+  #sd > .my(18px);
+  #sd > .my(18px, 12px);
+
+  //设置左右padding
+  #sd > .px(18px);
+  #sd > .px(18px, 12px);
+
+  //设置上下padding
+  #sd > .py(18px);
+  #sd > .py(18px, 12px);
+
+  //设置宽度和高度
+  #sd > .wh(18px);
+  #sd > .wh(18px, 12px);
+
+  //设置字体垂直居中
+  #sd > .text_middle(18px);
+}

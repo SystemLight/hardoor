@@ -20,5 +20,9 @@
     "url": "https://github.com/SystemLight/hardoor/issues"
   },
   "homepage": "https://github.com/SystemLight/hardoor#readme",
-  "dependencies": {}
+  "dependencies": {
+    "less": "^3.10.3",
+    "pug": "^2.0.4",
+    "pug-cli": "^1.0.0-alpha6"
+  }
 }
