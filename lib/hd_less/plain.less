@@ -1,26 +1,26 @@
 .clear_all() {
   .mp();
   li {
-    #sd > .clear_li();
+    #hd > .clear_li();
   }
   img {
-    #sd > .clear_img();
+    #hd > .clear_img();
   }
   input {
-    #sd > .clear_input(true);
+    #hd > .clear_input(true);
   }
   a {
-    #sd > .clear_a();
+    #hd > .clear_a();
   }
 }
 
 .mp() {
   body, ol, ul, li, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select {
-    #sd > .clear_mp();
+    #hd > .clear_mp();
   }
 }
 
-#sd {
+#hd {
   .clear_mp() {
     margin: 0;
     padding: 0;
