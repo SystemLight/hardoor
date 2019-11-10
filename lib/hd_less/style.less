@@ -1,17 +1,16 @@
-.full_page(@back) {
-  html, body {
-    width: 100%;
-    height: 100%;
-    background: @back;
-    overflow: auto;
+#hd {
+  .test_rect() {
+    display: block;
+    background: olivedrab;
   }
 
-  html {
-    overflow: hidden;
+  .test_rect(@w,@h) {
+    width: @w;
+    height: @h;
+    .test_rect();
   }
-}
 
-.text_middle(@height) {
-  height: @height;
-  line-height: @height;
+  .test_rect(@size) {
+    .test_rect(@size, @size);
+  }
 }

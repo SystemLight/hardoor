@@ -1,47 +1,70 @@
 #hd {
-    .mx(@l,@r) {
-      margin-left: @l;
-      margin-right: @r;
+  .mx(@l,@r) {
+    margin-left: @l;
+    margin-right: @r;
+  }
+
+  .mx(@size) {
+    .mx(@size, @size)
+  }
+
+  .my(@t,@b) {
+    margin-top: @t;
+    margin-bottom: @b;
+  }
+
+  .my(@size) {
+    .my(@size, @size);
+  }
+
+  .px(@l,@r) {
+    padding-left: @l;
+    padding-right: @r;
+  }
+
+  .px(@size) {
+    .px(@size, @size);
+  }
+
+  .py(@l,@r) {
+    padding-left: @l;
+    padding-right: @r;
+  }
+
+  .py(@size) {
+    padding-top: @size;
+    padding-bottom: @size;
+  }
+
+  .wh(@w,@y) {
+    width: @w;
+    height: @y;
+  }
+
+  .wh(@size) {
+    .wh(@size, @size);
+  }
+
+  .full_page(@back) {
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: @back;
+      overflow: auto;
     }
 
-    .mx(@size) {
-      .mx(@size, @size)
+    html {
+      overflow: hidden;
     }
+  }
 
-    .my(@t,@b) {
-      margin-top: @t;
-      margin-bottom: @b;
-    }
+  .text_middle(@height) {
+    height: @height;
+    line-height: @height;
+  }
 
-    .my(@size) {
-      .my(@size, @size);
-    }
-
-    .px(@l,@r) {
-      padding-left: @l;
-      padding-right: @r;
-    }
-
-    .px(@size) {
-      .px(@size, @size);
-    }
-
-    .py(@l,@r) {
-      padding-left: @l;
-      padding-right: @r;
-    }
-
-    .py(@size) {
-      padding-top: @size;
-      padding-bottom: @size;
-    }
-
-    .wh(@w,@y) {
-      width: @w;
-      height: @y;
-    }
-
-    .wh(@size) {
-      .wh(@size, @size);
-    }
+  .text_center(@size) {
+    font-size: @size;
+    text-align: center;
+  }
 }

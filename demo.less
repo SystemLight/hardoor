@@ -1,11 +1,12 @@
 @import "lib/hd_less/base.less";
 @import "lib/hd_less/plain.less";
+@import "lib/hd_less/style.less";
 
 //清除一些基础样式
 .clear_all();
 
 //只清除margin，padding
-.mp();
+.all_mp0();
 
 .plain {
   //清除margin,padding样式
@@ -54,4 +55,13 @@
 
   //设置字体垂直居中
   #hd > .text_middle(18px);
+}
+
+.style {
+  div {
+    //对div进行测试样式生成
+    #hd > .test_rect(18px);
+    #hd > .test_rect(18px, 18px);
+    #hd > .test_rect();
+  }
 }
