@@ -3,7 +3,6 @@
 [![Build Status](https://www.travis-ci.org/SystemLight/hardoor.svg?branch=master)](https://www.travis-ci.org/SystemLight/hardoor)
 [![NPM version](https://img.shields.io/npm/v/hardoor.svg)](https://www.npmjs.com/package/hardoor)
 
-
 > * Author：SystemLight  
 > * Contact：https://github.com/SystemLight
 
@@ -13,14 +12,13 @@
 > * 暂无
 
 ### 资源链接
-
 * 下载文件: [戳这里下载](https://github.com/SystemLight/hardoor.git)
 * 可用版本: [戳这里查看](https://github.com/SystemLight/hardoor/releases)
 * GitHub: [被托管在的 GitHub](https://github.com/SystemLight/hardoor)
 
 ### Hello, world(开始使用)
 ```
-    npm install hardoor -i
+npm install hardoor -i
 ```
 
 ### 备注
@@ -34,4 +32,11 @@
 ```
 travis.yml配置时候nodejs不要选太高，
 12版本表示没法正常npm发布，要使用10版本
+```
+
+### 包含
+```
+less  less基础模板
+pug   pug基础模板
+tween 轻量补间动画库
 ```
