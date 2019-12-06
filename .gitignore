@@ -3,7 +3,3 @@
 build/
 dist/
 node_modules/
-
-*.css
-*.html
-*.map
