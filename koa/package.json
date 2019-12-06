@@ -1,0 +1,19 @@
+{
+  "name": "file_manager_for_koa",
+  "version": "1.0.0",
+  "description": "file_manager基于koa2的服务端程序",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"no test specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "SystemLight",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
+    "koa-static": "^5.0.0"
+  }
+}
