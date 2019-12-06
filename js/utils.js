@@ -28,6 +28,30 @@ export let tool = {
     }
 };
 
+export let performance = {
+    debounce: function (fn, wait) {
+        let timer = 0;
+        return function (...args) {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                fn.apply(this, args);
+            }, wait);
+        }
+    },
+    throttle: function (fn, wait) {
+        let timer = null;
+        return function (...args) {
+            if (timer) {
+                return;
+            }
+            timer = setTimeout(function () {
+                fn.apply(this, args);
+                timer = null;
+            }, wait);
+        }
+    }
+};
+
 export default {
     id: function (idStr) {
         return document.getElementById(idStr);
