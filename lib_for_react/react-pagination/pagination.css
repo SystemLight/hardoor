@@ -1,0 +1,32 @@
+.pagination-wrap {
+  display: inline-block;
+  user-select: none;
+}
+.pagination-wrap .pagination {
+  list-style: none;
+  display: flex;
+  border: 1px solid #efefef;
+  padding: 0;
+  margin: 0;
+}
+.pagination-wrap .pagination .btn {
+  cursor: pointer;
+  background-color: white;
+  height: 33px;
+  line-height: 33px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-right: 1px solid #efefef;
+}
+.pagination-wrap .pagination .btn.prev,
+.pagination-wrap .pagination .btn.next {
+  line-height: 24px;
+}
+.pagination-wrap .pagination .btn.active {
+  background-color: #00BFFF;
+  color: white;
+}
+.pagination-wrap .pagination .btn:last-child {
+  border-right: none;
+}
+/*# sourceMappingURL=pagination.css.map */

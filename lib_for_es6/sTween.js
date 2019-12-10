@@ -194,6 +194,7 @@ LsTween.tween = {
         return Tween['bounceOut'](t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;
     }
 };
+
 LsTween.transformAttr = [
     "rotate",
     "rotateX",
@@ -208,6 +209,7 @@ LsTween.transformAttr = [
     "skewX",
     "skewY"
 ];
+
 LsTween.normalAttr = [
     "width",
     "height",
@@ -224,6 +226,7 @@ LsTween.normalAttr = [
     "paddingTop",
     "paddingBottom"
 ];
+
 LsTween.css = function (el, attr, val) {
     if (typeof attr == "object") {
         for (let s in attr) {
@@ -252,6 +255,7 @@ LsTween.css = function (el, attr, val) {
         }
     }
 };
+
 LsTween.setTransform = function (el, attr, val) {
     el.transform = el.transform || {};
     if (val === undefined) {
@@ -285,7 +289,10 @@ LsTween.setTransform = function (el, attr, val) {
     }
     el.style.WebkitTransform = el.style.transform = transformVal.trim();
 };
+
 LsTween.stop = function (el) {
     cancelAnimationFrame(el.animationTimer);
     el.animationTimer = 0;
 };
+
+export default LsTween;
