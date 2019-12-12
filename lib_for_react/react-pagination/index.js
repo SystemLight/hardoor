@@ -1,12 +1,12 @@
 import React, {useRef} from "react";
 
-import './pagination.css';
+import './pagination.less';
 
 
 export default function Pagination(props) {
     const ulElement = useRef(null);
 
-    let {currentPage, perPageData, totalData, maxDisplayPage, changeBtn} = props;
+    let {currentPage, perPageData, totalData, maxDisplayPage, onClickBtn} = props;
 
     let totalPage = Math.ceil(totalData / perPageData);
     maxDisplayPage = maxDisplayPage || 5;
@@ -51,7 +51,7 @@ export default function Pagination(props) {
                 if (Array.prototype.some.call(ulElement.current.querySelectorAll(".btn"), (v) => {
                     return v === e.target;
                 })) {
-                    changeBtn && changeBtn({target: e.target, totalPage});
+                    onClickBtn && onClickBtn({target: e.target, totalPage});
                 }
             }}>
                 <li key="prevBtn" className="btn">上一页</li>
