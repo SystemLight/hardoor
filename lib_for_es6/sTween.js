@@ -1,5 +1,5 @@
 (function () {
-    // 判断是否存在帧动画函数
+    // 判断是否存在帧动画函数，没有requestAnimationFrame自己实现一个
     if (!window.requestAnimationFrame) {
         let lastTime = 0;
         window.requestAnimationFrame = function (callback) {
@@ -15,6 +15,41 @@
 })();
 
 function LsTween(op) {
+    // 核心函数，
+    // 参数说明：
+    //          el : 一个dom对象，需要执行动画的dom对象
+    //          attr : dom对象的css属性值，如，width,height,left,right,top,bottom
+    //                  注意transform变换的属性无法直接设置，如scaleX,translateX等
+    //                  需要使用LsTween.setTransform(el:dom对象, attr:css属性值, val:具体值)来进行初始化属性
+    //           fx:动画曲线，可选["easeOut","easeIn","liner","详情参考LsTween.tween的属性"]
+    //           duration:完成动画的时间，默认值 400,0.4s，高级用法：略
+
+    // 用户需要用到的函数
+    //          LsTween(op) 核心动画函数
+    //          LsTween.stop(el:需要暂停动画的dom，也是之前传入LsTween的dom) 暂停dom绑定的动画
+    //          setTransform(el:dom对象, attr:css属性值, val:具体值) 为了让Transform可以被直接设置到attr，请使用setTransform初始化
+
+    // 使用案例：
+    // 0.4s内div元素从当前宽度变化到200px像素
+    // LsTween({
+    //     el: document.querySelector("div"),
+    //     attr: {
+    //         width: 200
+    //     },
+    //     duration: 400
+    // });
+
+    // 使用案例：
+    // 0.4s内div元素从正常大小变为2倍大小
+    // LsTween.setTransform(document.querySelector("div"),"scale",1);
+    // LsTween({
+    //     el: document.querySelector("div"),
+    //     attr: {
+    //         scale: 2
+    //     },
+    //     duration: 400
+    // });
+
     let el = op["el"];
     let attr = op["attr"];
     let fx = op.fx || "easeOut";
@@ -64,6 +99,7 @@ function LsTween(op) {
 }
 
 LsTween.tween = {
+    // LsTween的fx可选参数，这些是动画运行曲线
     linear: function (t, b, c, d) {  //匀速
         return c * t / d + b;
     },
