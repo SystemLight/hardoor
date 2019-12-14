@@ -1,16 +1,26 @@
 #hd {
-  .test_rect() {
+  .test-rect() {
     display: block;
     background: olivedrab;
   }
 
-  .test_rect(@w,@h) {
+  .test-rect(@w,@h) {
     width: @w;
     height: @h;
-    .test_rect();
+    .test-rect();
   }
 
-  .test_rect(@size) {
-    .test_rect(@size, @size);
+  .test-rect(@size) {
+    .test-rect(@size, @size);
+  }
+
+  .text-middle(@height) {
+    height: @height;
+    line-height: @height;
+  }
+
+  .text-center(@size) {
+    font-size: @size;
+    text-align: center;
   }
 }

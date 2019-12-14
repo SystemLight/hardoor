@@ -1,46 +1,45 @@
-.clear_all() {
-  .all_mp0();
+.clear-all() {
+  .all-mp0();
   li {
-    #hd > .clear_li();
+    #hd > .clear-li();
   }
   img {
-    #hd > .clear_img();
+    #hd > .clear-img();
   }
   input {
-    #hd > .clear_input(false);
+    #hd > .clear-input(false);
   }
   a {
-    #hd > .clear_a();
+    #hd > .clear-a();
   }
 }
 
-.all_mp0() {
+.all-mp0() {
   body, ol, ul, li, h1, h2, h3, h4, h5, h6, p, th, td, dl, dd, form, fieldset, legend, input, textarea, select {
-    #hd > .clear_mp();
+    #hd > .clear-mp();
   }
 }
-
 
 #hd {
-  .clear_mp() {
+  .clear-mp() {
     margin: 0;
     padding: 0;
   }
 
-  .clear_li() {
+  .clear-li() {
     list-style: none;
   }
 
-  .clear_img() {
+  .clear-img() {
     border: 0;
     vertical-align: top;
   }
 
-  .clear_input(@all) when (@all=false) {
+  .clear-input(@all) when (@all=false) {
     vertical-align: top;
   }
 
-  .clear_input(@all) when (@all=true) {
+  .clear-input(@all) when (@all=true) {
     vertical-align: top;
     outline: none;
     border: none;
@@ -48,17 +47,17 @@
     background-color: transparent;
   }
 
-  .clear_a() {
+  .clear-a() {
     text-decoration: none
   }
 
-  .clear_wrap() {
+  .clear-wrap() {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  .clear_fix() {
+  .clear-fix() {
     &:after {
       content: "";
       display: block;
