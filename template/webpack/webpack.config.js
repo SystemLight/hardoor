@@ -26,12 +26,44 @@ const devConfig = {
     module: {
         rules: [
             {
-                test: /\.less/,
-                loader: 'style-loader!css-loader!less-loader'
+                test: /^(?!.*\.module).*\.less$/,
+                loader: 'style-loader!css-loader!less-loader',
+                exclude: /(node_modules|bower_components)/
             },
             {
-                test: /\.css$/,
+                test: /^(.*\.module).less$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: "[name]-[hash:base64:6]",
+                            },
+                        }
+                    },
+                    "less-loader"
+                ],
+                exclude: /(node_modules|bower_components)/
+            },
+            {
+                test: /^(?!.*\.module).*\.css$/,
                 loader: 'style-loader!css-loader'
+            },
+            {
+                test: /^(.*\.module).css$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: "[name]-[hash:base64:6]",
+                            },
+                        }
+                    }
+                ],
+                exclude: /(node_modules|bower_components)/
             },
             {
                 test: /(\.jsx|\.js)$/,
@@ -87,36 +119,7 @@ const proConfig = {
         filename: "js/[name].bundle.js",
         publicPath: "/"
     },
-    module: {
-        rules: [
-            {
-                test: /\.less/,
-                loader: 'style-loader!css-loader!less-loader'
-            },
-            {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
-            },
-            {
-                test: /(\.jsx|\.js)$/,
-                loader: 'babel-loader',
-                exclude: /(node_modules|bower_components)/
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 8192,
-                        fallback: 'file-loader',
-                        name: 'images/[name].[hash:7].[ext]',
-                        publicPath: '/'
-                    }
-                }],
-                exclude: /(node_modules|bower_components)/
-            },
-        ]
-    },
+    module: devConfig.module,
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
