@@ -5,16 +5,27 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
-const devConfig = {
-    mode: 'development',
-    devtool: 'inline-source-map',
+// development or production
+const workEnv = "development";
+
+let getMinify = workEnv === "development" ? undefined : {
+    removeComments: true,
+    collapseWhitespace: true,
+    minifyCSS: true
+};
+
+let getDevServer = workEnv === "development" ? {
+    contentBase: './dist',
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+} : undefined;
+
+let config = {
+    mode: workEnv,
+    devtool: workEnv === "development" ? 'inline-source-map' : "source-map",
+    devServer: getDevServer,
     context: __dirname,
-    devServer: {
-        contentBase: './dist',
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-    },
     entry: {
         index: "./src/index.js"
     },
@@ -96,6 +107,7 @@ const devConfig = {
             filename: 'index.html',
             template: "./public/index.html",
             inject: true,
+            minify: getMinify
         }),
         new CopyWebpackPlugin([
             {
@@ -107,44 +119,4 @@ const devConfig = {
     ]
 };
 
-const proConfig = {
-    mode: 'production',
-    devtool: "source-map",
-    context: __dirname,
-    entry: {
-        index: "./src/index.js"
-    },
-    output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "js/[name].bundle.js",
-        publicPath: "/"
-    },
-    module: devConfig.module,
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            title: 'my react app',
-            keywords: "关键词",
-            description: "描述",
-            iconPath: "./images/favicon.ico",
-            hash: false,
-            filename: 'index.html',
-            template: "./public/index.html",
-            inject: true,
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                minifyCSS: true
-            }
-        }),
-        new CopyWebpackPlugin([
-            {
-                from: __dirname + '/public',
-                to: __dirname + '/dist',
-                ignore: ['.*']
-            }
-        ])
-    ]
-};
-
-module.exports = devConfig;
+module.exports = config;
