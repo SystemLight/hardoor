@@ -4,6 +4,27 @@ export let is = {
     }
 };
 
+export let withData = {
+    groupBy: function (data, key) {
+        let groupObj = {};
+        data.forEach(v => {
+            if (groupObj.hasOwnProperty(v[key])) {
+                groupObj[v[key]].push(v);
+            } else {
+                groupObj[v[key]] = [v];
+            }
+        });
+        return groupObj;
+    },
+    flat: function (data) {
+        let originArray = [];
+        Object.keys(data).map(key => {
+            originArray.push(...data[key])
+        });
+        return originArray;
+    }
+};
+
 export let fastChar = {
     cutEnd: function (str, cutStr) {
         if (str.endsWith(cutStr)) {
