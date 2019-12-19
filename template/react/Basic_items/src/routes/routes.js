@@ -8,19 +8,29 @@ const routes = [
     {
         title: "首页",
         path: "/",
+        to: "/",
+        isDynamic: true,
         exact: true,
+        isNav: true,
         render(...props) {
             return <Home {...props}/>
         },
-        isNav: true
+        active(match, location) {
+            return true;
+        }
     }, {
         title: "404",
         path: "",
-        exact: true,
+        to: "",
+        isDynamic: false,
+        exact: false,
+        isNav: false,
         render(...props) {
             return <View404 {...props}/>
         },
-        isNav: false
+        active(match, location) {
+            return false;
+        }
     }
 ];
 

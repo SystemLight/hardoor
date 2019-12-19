@@ -19,6 +19,14 @@ let getDevServer = workEnv === "development" ? {
     historyApiFallback: true,
     hot: true,
     inline: true,
+    proxy: {
+        '/proxy':
+            {
+                target: 'https://cnodejs.org/',
+                pathRewrite: {'^/proxy': ''},
+                changeOrigin: true
+            }
+    }
 } : undefined;
 
 let config = {

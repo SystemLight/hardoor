@@ -1,11 +1,10 @@
 import React from "react";
 
+import HeadNav from "./component/headNav/headNav";
+
 
 export default function App(props) {
     return (
-        <div>
-            1521
-            <img src={require("./static/images/avatar.jpg")} alt=""/>
-        </div>
+        <HeadNav/>
     );
 }
