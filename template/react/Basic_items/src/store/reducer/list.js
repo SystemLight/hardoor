@@ -1,3 +1,3 @@
-export default function list(list = {}, action) {
-    return list;
+export default function list(state = {}, action) {
+    return state;
 }
