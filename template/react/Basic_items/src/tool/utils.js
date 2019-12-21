@@ -5,9 +5,12 @@ export let is = {
 };
 
 export let withData = {
-    groupBy: function (data, key) {
+    groupBy: function (data, key, process) {
         let groupObj = {};
         data.forEach(v => {
+            if (process) {
+                v = process(v);
+            }
             if (groupObj.hasOwnProperty(v[key])) {
                 groupObj[v[key]].push(v);
             } else {
