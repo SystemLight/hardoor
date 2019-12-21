@@ -18,7 +18,7 @@ export let withData = {
     },
     flat: function (data) {
         let originArray = [];
-        Object.keys(data).map(key => {
+        Object.keys(data).forEach(key => {
             originArray.push(...data[key])
         });
         return originArray;
