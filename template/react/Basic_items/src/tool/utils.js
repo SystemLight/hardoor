@@ -5,6 +5,26 @@ export let is = {
 };
 
 export let withData = {
+    groupByArray: function (data, keys, process) {
+        let groupArray = [];
+        let groupIndex = {};
+        data.forEach(v => {
+            if (process) {
+                v = process(v);
+            }
+            let key = "";
+            keys.forEach(k => {
+                key += v[k];
+            });
+            if (groupIndex.hasOwnProperty(key)) {
+                groupArray[groupIndex[key]].push(v);
+            } else {
+                groupArray.push([v]);
+                groupIndex[key] = groupArray.length - 1;
+            }
+        });
+        return groupArray;
+    },
     groupBy: function (data, key, process) {
         let groupObj = {};
         data.forEach(v => {
