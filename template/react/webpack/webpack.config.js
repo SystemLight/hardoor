@@ -67,7 +67,8 @@ let config = {
             },
             {
                 test: /^(?!.*\.module).*\.css$/,
-                loader: 'style-loader!css-loader'
+                loader: 'style-loader!css-loader',
+                exclude: /(node_modules|bower_components)/
             },
             {
                 test: /^(.*\.module).css$/,
