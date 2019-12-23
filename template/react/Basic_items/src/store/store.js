@@ -1,9 +1,9 @@
 import {createStore, combineReducers, applyMiddleware} from "redux";
 import thunk from 'redux-thunk';
 
-import list from "./reducer/list";
+import example from "./reducer/example";
 
 
 export default createStore(combineReducers({
-    list
+    example
 }), applyMiddleware(thunk));
