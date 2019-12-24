@@ -2,37 +2,97 @@ const fs = require("fs");
 const sPath = require("path");
 
 
-async function readFolder(path) {
-    return await new Promise(resolve => {
+function fileStat(path) {
+    return new Promise(resolve => {
+        fs.stat(path, (err, stats) => {
+            if (err) {
+                resolve({err});
+            }
+            resolve({stats});
+        });
+    })
+}
+
+function exists(file) {
+    return new Promise(function (resolve) {
+        fs.access(file, fs.constants.F_OK, (err) => {
+            if (err) {
+                resolve({err, exist: false});
+            }
+            resolve({exist: true});
+        });
+    })
+}
+
+function readFolder(path) {
+    return new Promise(resolve => {
         fs.readdir(path, (err, files) => {
             if (err) {
-                resolve({err})
+                resolve({err});
             }
             resolve({files});
         });
     })
 }
 
-async function createFolder(path) {
-    return await new Promise(resolve => {
-        fs.mkdir(path, {recursive: true}, err => {
+function createFolder(path) {
+    return new Promise(resolve => {
+        fs.mkdir(path, err => {
             if (err) {
                 resolve({err});
             }
-            resolve({});
+            resolve({success: true});
         });
-    });
+    })
 }
 
-async function removeEmptyFolder(path) {
-    return await new Promise(resolve => {
+function removeEmptyFolder(path) {
+    return new Promise(resolve => {
         fs.rmdir(path, err => {
             if (err) {
                 resolve({err});
             }
-            resolve({});
+            resolve({success: true});
         });
     })
+}
+
+function removeFile(path) {
+    return new Promise(resolve => {
+        fs.unlink(path, err => {
+            if (err) {
+                resolve({err});
+            }
+            resolve({success: true});
+        });
+    });
+}
+
+function move(oldPath, newPath) {
+    return new Promise(resolve => {
+        fs.rename(oldPath, newPath, err => {
+            if (err) {
+                resolve({err});
+            }
+            resolve({success: true});
+        });
+    });
+}
+
+async function createNestedFolder(path) {
+    let parentPath = sPath.dirname(path);
+    let {exist} = await exists(parentPath);
+    if (!exist) {
+        let {err} = await createNestedFolder(parentPath);
+        if (err) {
+            return {err};
+        }
+    }
+    let {err} = await createFolder(path);
+    if (err) {
+        return {err};
+    }
+    return {success: true};
 }
 
 async function RemoveFolder(path) {
@@ -57,45 +117,8 @@ async function RemoveFolder(path) {
     return await removeEmptyFolder(path);
 }
 
-async function fileStat(path) {
-    return await new Promise(resolve => {
-        fs.stat(path, (err, stats) => {
-            if (err) {
-                resolve({err});
-            }
-            resolve({stats});
-        });
-    })
-}
 
-async function removeFile(path) {
-    return await new Promise(resolve => {
-        fs.unlink(path, err => {
-            if (err) {
-                resolve({err});
-            }
-            resolve({});
-        });
-    });
-}
+move("./dest/1", "./dest/8").then((e) => {
+    console.log(e);
+});
 
-async function move(oldPath, newPath) {
-    return await new Promise(resolve => {
-        fs.rename(oldPath, newPath, err => {
-            if (err) {
-                resolve({err});
-            }
-            resolve({});
-        });
-    });
-}
-
-module.exports = {
-    readFolder,
-    createFolder,
-    removeEmptyFolder,
-    RemoveFolder,
-    fileStat,
-    removeFile,
-    move,
-};
