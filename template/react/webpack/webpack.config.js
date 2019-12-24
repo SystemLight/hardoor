@@ -38,8 +38,8 @@ let config = {
         index: "./src/index.js"
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
         filename: "js/[name].bundle.js",
+        path: path.resolve(__dirname, "dist"),
         publicPath: "/"
     },
     module: {
@@ -125,7 +125,12 @@ let config = {
                 ignore: ['.*']
             }
         ])
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }
 };
 
 module.exports = config;
