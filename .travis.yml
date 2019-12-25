@@ -3,6 +3,9 @@ sudo: required
 language: node_js
 node_js:
   - '10'
+branches:
+  only:
+    - master
 stages:
   - name: hardoor
   - name: test
@@ -24,7 +27,7 @@ jobs:
         - echo i am test-2
 
     - stage: hardoor
-      name: "hardoor-2"
+      name: "hardoor-1"
       env:
         - GITHUB=https://github.com/SystemLight/hardoor
       before_deploy:
