@@ -3,6 +3,9 @@
   "version": "0.1.20",
   "description": "Hardoor is a front-end framework specification.",
   "main": "index.js",
+  "bin": {
+    "hardoor": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"hardoor is good\" && exit 0"
   },
@@ -11,8 +14,7 @@
     "url": "git+https://github.com/SystemLight/hardoor.git"
   },
   "keywords": [
-    "hardoor",
-    "nodejs"
+    "hardoor"
   ],
   "author": "SystemLight",
   "license": "MIT",
