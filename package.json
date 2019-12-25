@@ -1,7 +1,7 @@
 {
   "name": "hardoor",
   "version": "0.2.2",
-  "description": "Hardoor is a front-end framework specification.",
+  "description": "Hardoor is a front-end utility kit.",
   "main": "index.js",
   "bin": {
     "hardoor": "./bin/index.js"
