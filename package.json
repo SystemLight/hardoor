@@ -1,6 +1,6 @@
 {
   "name": "hardoor",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Hardoor is a front-end framework specification.",
   "main": "index.js",
   "bin": {
