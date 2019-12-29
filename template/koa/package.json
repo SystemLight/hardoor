@@ -1,12 +1,11 @@
 {
-  "name": "file_manager_for_koa",
+  "name": "@template/koa",
   "version": "1.0.0",
-  "description": "file_manager基于koa2的服务端程序",
-  "main": "index.js",
+  "description": "",
+  "private": true,
   "scripts": {
-    "test": "echo \"no test specified\" && exit 0"
+    "test": "echo \"no test\" && exit 0"
   },
-  "keywords": [],
   "author": "SystemLight",
   "license": "MIT",
   "dependencies": {
