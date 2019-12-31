@@ -39,7 +39,7 @@ let getHtmlPage = function (pages) {
             iconPath: "./favicon.ico",
             style: "",
             pageName: "index",
-            template: "./template/template.html",
+            template: "./draft/template.html",
             chunks: []
         };
         if (typeof page === "string") {
