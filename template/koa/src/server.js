@@ -7,10 +7,7 @@ const koaStatic = require("koa-static");
 
 const app = new koa();
 const router = new koaRouter();
-
-
 const port = 9000;
-
 
 function register(router, path) {
     let files = fs.readdirSync(path);
@@ -22,6 +19,7 @@ function register(router, path) {
 }
 
 function printInfo() {
+    console.log("Server start");
     console.log(`Local access : [ http://127.0.0.1:${port} ]`);
 }
 

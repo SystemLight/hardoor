@@ -1,7 +1,7 @@
 # hardoor
 
-[![Build Status](https://www.travis-ci.org/SystemLight/hardoor.svg?branch=master)](https://www.travis-ci.org/SystemLight/hardoor)
 [![NPM version](https://img.shields.io/npm/v/hardoor.svg)](https://www.npmjs.com/package/hardoor)
+[![Build Status](https://www.travis-ci.org/SystemLight/hardoor.svg?branch=master)](https://www.travis-ci.org/SystemLight/hardoor)
 
 Hardoor is a front-end utility kit.  
 NPM page: https://www.npmjs.com/package/hardoor
