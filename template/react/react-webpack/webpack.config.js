@@ -15,9 +15,10 @@ let getMinify = workEnv === "development" ? undefined : {
 
 let getDevServer = workEnv === "development" ? {
     contentBase: './dist',
-    historyApiFallback: true,
-    hot: true,
     inline: true,
+    historyApiFallback: true,
+    hot: false,
+    hotOnly: false,
     proxy: {
         '/proxy':
             {
