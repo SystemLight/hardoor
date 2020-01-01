@@ -6,16 +6,14 @@ import http from '../../request/http';
 
 
 export default function HeadNav(props) {
-    console.log(routes);
     http.get("/").then(function (res) {
-        console.log(res);
+        console.log("[headNav组件] 代理请求数据测试：", res);
     });
 
     return (
         <div>
             <NavLink to="/events/123"
                      isActive={(match, location) => {
-                         console.log(match, location);
                          return false
                      }}
             >导航主页</NavLink>

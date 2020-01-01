@@ -28,6 +28,6 @@ let splitChunks = {
 
 module.exports = {
     // workEnv : development or production
-    workEnv: "production", splitChunks,
+    workEnv: "development", splitChunks,
     pages: "index"
 };

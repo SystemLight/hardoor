@@ -8,11 +8,15 @@ import {Provider} from 'react-redux';
 import RouteList from "./routes/routeList";
 import store from "./store/store";
 import HeadNav from "./component/headNav/headNav";
+import TrialCssModule from "./component/trialCssModule/trialCssModule";
 
 
 function App(props) {
     return (
-        <HeadNav/>
+        <>
+            <HeadNav/>
+            <TrialCssModule/>
+        </>
     );
 }
 
