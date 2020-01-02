@@ -4,16 +4,19 @@ import Home from "../page/home/home";
 import View404 from "../page/status/view404";
 
 
-export const navRoutes = [];
-
 const routes = [
     {
+        to: "/",
         path: "/",
+        isNav: true,
+        title: "首页",
         exact: true,
         render(...props) {
             return <Home {...props}/>
         }
-    }, {
+    },
+    {
+        isNav: false,
         path: "",
         exact: false,
         render(...props) {
@@ -21,5 +24,6 @@ const routes = [
         }
     }
 ];
+
 
 export default routes;
