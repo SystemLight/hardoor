@@ -11,7 +11,8 @@ program.version(info.version)
     .name(info.name);
 program
     .option('-a, --antd', 'generate react antd project')
-    .option('-w, --webpack', 'generate react webpack project');
+    .option('-w, --webpack', 'generate react webpack project')
+    .option('-k, --koa', 'generate koa project');
 
 program.parse(process.argv);
 if (program.antd) {
@@ -19,6 +20,9 @@ if (program.antd) {
 }
 if (program.webpack) {
     generate(ph.resolve(__dirname, "../template/react/react-webpack"));
+}
+if (program.koa) {
+    generate(ph.resolve(__dirname, "../template/koa"));
 }
 
 function generate(template_dir) {
