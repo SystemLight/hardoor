@@ -1,6 +1,6 @@
 {
   "name": "hardoor",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Hardoor is a front-end utility kit.",
   "main": "index.js",
   "bin": {
