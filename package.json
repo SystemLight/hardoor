@@ -22,5 +22,7 @@
     "url": "https://github.com/SystemLight/hardoor/issues"
   },
   "homepage": "https://github.com/SystemLight/hardoor#readme",
-  "dependencies": {}
+  "dependencies": {
+    "commander": "^4.0.1"
+  }
 }
