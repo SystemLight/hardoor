@@ -27,6 +27,12 @@ function generate(template_dir) {
         console.log("result: ", e);
         console.log("wait install");
         if (!e.err) {
+            let P = ["\\", "|", "/", "-"];
+            let x = 0;
+            let waitTimer = setInterval(function () {
+                process.stdout.write("\r" + P[x++]);
+                x &= 3;
+            }, 250);
             const install = child_process.exec("npm install", (error) => {
                 if (error) {
                     console.error(error);
@@ -35,6 +41,7 @@ function generate(template_dir) {
                 console.log("done install");
             });
             install.stdout.on('data', (data) => {
+                clearInterval(waitTimer);
                 console.log(data);
             });
         }
