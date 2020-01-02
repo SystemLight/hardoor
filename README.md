@@ -12,18 +12,25 @@ NPM page: https://www.npmjs.com/package/hardoor
 npm install hardoor -g
 ```
 
-# Used hardoor
+# Use hardoor to create project template after V0.3.0
 
-## workspace
-
-```
+## react project of webpack
 
 ```
-
-## Create react of webpack
-
+`hardoor` need a empty folder.
+You must in project path and execute `hardoor -w`
 ```
 
+## react project of antd
+
+```
+`hardoor` need a empty folder.
+You must in project path and execute `hardoor -a`
+```
+
+# Other lib
+```
+Too lazy to say
 ```
 
 # Resources
