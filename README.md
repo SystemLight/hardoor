@@ -28,6 +28,13 @@ You must in project path and execute `hardoor -w`
 You must in project path and execute `hardoor -a`
 ```
 
+## project of koa
+
+```
+`hardoor` need a empty folder.
+You must in project path and execute `hardoor -k`
+```
+
 # Other lib
 ```
 Too lazy to say
