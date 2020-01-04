@@ -1,8 +1,7 @@
-# 项目名称
+# react-antd
 
 ** 项目说明 **
-特别注意，这是一个create-react-app配置项目，额外引入了antd和less，
-它缺少基本的Basic_items，请将Basic_items中的public和src引入到根目录中
+这是一个create-react-app配置项目模板，额外引入了其它需要的工具模块，参考技术栈。
 
 ## 技术栈
 
@@ -12,37 +11,36 @@
 
 #### 服务器
 
-- [x] ubuntu18
-    - [x] nginx
+- [ ] windows server
 
 #### 数据库
 
-- [x] mysql5
+- [ ] sqlite
 
 #### 后端
 
-- [x] python3.5
-    - [x] tornado6.3
+- [x] node8
+    - [ ] koa2
 
 #### 前端
 
-- [x] JQuery3.3
-- [x] bootstrap4
-
+- [x] react
+    - [x] react-router-dom
+    - [x] react-redux
+    - [x] reselect
+- [x] redux
+    - [x] redux-thunk
+- [x] axios
+- [x] less
 
 ## 项目功能实现
 
-- [x] 1.增加数据
-- [x] 2.删除数据
-- [ ] 3.修改数据
-- [ ] 4.查询数据
-- [ ] 5.自动换肤
-
+- [ ] 1.
 
 ## 参考资料
 
-#### 1. 安装koa
+#### 1. 自行编写项目文档
 
 ```
-npm install koa
+
 ```
