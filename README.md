@@ -3,7 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/hardoor.svg)](https://www.npmjs.com/package/hardoor)
 [![Build Status](https://www.travis-ci.org/SystemLight/hardoor.svg?branch=master)](https://www.travis-ci.org/SystemLight/hardoor)
 
-Hardoor is a front-end utility kit.  
+Hardoor is a front-end utility kit and it can also automatically generate front-end project templates.  
 NPM page: https://www.npmjs.com/package/hardoor
 
 # Installation
@@ -12,26 +12,36 @@ NPM page: https://www.npmjs.com/package/hardoor
 npm install hardoor -g
 ```
 
-# Use hardoor to create project template after V0.3.0
+# Use hardoor to generate project template after V0.3.0
 
-## react project of webpack
-
-```
-`hardoor` need a empty folder.
-You must in project path and execute `hardoor -w`
-```
-
-## react project of antd
+## generate react and webpack project
 
 ```
-`hardoor` need a empty folder.
-You must in project path and execute `hardoor -a`
+execute `hardoor -w` in your empty folder.
+```
+
+## generate react and antd project
+
+```
+execute `hardoor -a` in your empty folder.
+```
+
+## automatically execute npm install
+```
+add arguments -i
+
+such as:
+    hardoor -w -i
 ```
 
 # Other lib
 ```
 Too lazy to say
 ```
+
+# Note
+
+- If installation is slow, change npm repository
 
 # Resources
 
