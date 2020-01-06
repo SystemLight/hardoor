@@ -44,6 +44,7 @@ function main() {
         .option('-a, --antd', 'generate react antd project')
         .option('-w, --webpack', 'generate react webpack project')
         .option('-k, --koa', 'generate koa project')
+        .option('-p, --project', 'generate a project')
         .option('-i, --install', 'automatically execute npm install');
     program.parse(process.argv);
     if (program.antd) {
@@ -54,6 +55,9 @@ function main() {
     }
     if (program.koa) {
         generate(ph.resolve(__dirname, "../template/koa"), program.install);
+    }
+    if (program.project) {
+        generate(ph.resolve(__dirname, "../template/project"), program.install);
     }
 }
 
