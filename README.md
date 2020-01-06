@@ -14,13 +14,13 @@ npm install hardoor -g
 
 # Use hardoor to generate project template after V0.3.0
 
-## generate react and webpack project
+## generate `react` and `webpack` project
 
 ```
 execute `hardoor -w` in your empty folder.
 ```
 
-## generate react and antd project
+## generate `react` and `antd` project
 
 ```
 execute `hardoor -a` in your empty folder.
@@ -34,11 +34,10 @@ such as:
     hardoor -w -i
 ```
 
-## project of koa
+## generate `koa` project
 
 ```
-`hardoor` need a empty folder.
-You must in project path and execute `hardoor -k`
+execute `hardoor -k` in your empty folder.
 ```
 
 # Other lib
