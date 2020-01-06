@@ -3,8 +3,10 @@
 [![NPM version](https://img.shields.io/npm/v/hardoor.svg)](https://www.npmjs.com/package/hardoor)
 [![Build Status](https://www.travis-ci.org/SystemLight/hardoor.svg?branch=master)](https://www.travis-ci.org/SystemLight/hardoor)
 
-Hardoor is a front-end utility kit and it can also automatically generate front-end project templates.  
+Hardoor can automatically generate front-end project templates.   
 NPM page: https://www.npmjs.com/package/hardoor
+
+You might more like [yoman](https://github.com/yeoman/yo?_blank)
 
 # Installation
 

@@ -3,7 +3,7 @@ const program = require('commander');
 const ph = require('path');
 const child_process = require('child_process');
 
-const shutil = require("../lib/shutil");
+const shutil = require("halfigs/node8-basic/shutil");
 const info = require(ph.resolve(__dirname, "../package.json"));
 
 
