@@ -34,6 +34,13 @@ such as:
     hardoor -w -i
 ```
 
+## project of koa
+
+```
+`hardoor` need a empty folder.
+You must in project path and execute `hardoor -k`
+```
+
 # Other lib
 ```
 Too lazy to say
