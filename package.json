@@ -1,7 +1,7 @@
 {
   "name": "hardoor",
   "version": "0.3.1",
-  "description": "Hardoor is a front-end utility kit and it can also automatically generate front-end project templates.",
+  "description": "Hardoor can automatically generate front-end project templates.",
   "main": "index.js",
   "bin": {
     "hardoor": "./bin/index.js"
