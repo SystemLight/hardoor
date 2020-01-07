@@ -3,13 +3,13 @@ const program = require('commander');
 const ph = require('path');
 const child_process = require('child_process');
 
-const shutil = require("halfigs/node8-basic/shutil");
+const {copy} = require("halfigs/node8-basic/shutil");
 const info = require(ph.resolve(__dirname, "../package.json"));
 
 
 function generate(template_dir, install) {
     let process_dir = process.cwd();
-    shutil.copy.copyFolder(template_dir, process_dir).then(function (e) {
+    copy.copyFolder(template_dir, process_dir).then(function (e) {
         console.log("generate template results: ", e);
         !e.err && install && npmInstall();
     });

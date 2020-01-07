@@ -4,7 +4,7 @@
   "description": "Hardoor can automatically generate front-end project templates.",
   "main": "index.js",
   "bin": {
-    "hardoor": "./bin/index.js"
+    "hardoor": "./bin/hardoor.js"
   },
   "scripts": {
     "test": "echo \"hardoor is good\" && exit 0"
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/SystemLight/hardoor#readme",
   "dependencies": {
-    "commander": "^4.0.1"
+    "commander": "^4.0.1",
+    "halfigs": "0.0.6"
   }
 }
