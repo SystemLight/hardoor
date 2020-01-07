@@ -3,13 +3,13 @@ const program = require('commander');
 const ph = require('path');
 const child_process = require('child_process');
 
-const shutil = require("halfigs/node8-basic/shutil");
+const {copy} = require("halfigs/node8-basic/shutil");
 const info = require(ph.resolve(__dirname, "../package.json"));
 
 
 function generate(template_dir, install) {
     let process_dir = process.cwd();
-    shutil.copy.copyFolder(template_dir, process_dir).then(function (e) {
+    copy.copyFolder(template_dir, process_dir).then(function (e) {
         console.log("generate template results: ", e);
         !e.err && install && npmInstall();
     });
@@ -44,6 +44,7 @@ function main() {
         .option('-a, --antd', 'generate react antd project')
         .option('-w, --webpack', 'generate react webpack project')
         .option('-k, --koa', 'generate koa project')
+        .option('-p, --project', 'generate a project')
         .option('-i, --install', 'automatically execute npm install');
     program.parse(process.argv);
     if (program.antd) {
@@ -54,6 +55,9 @@ function main() {
     }
     if (program.koa) {
         generate(ph.resolve(__dirname, "../template/koa"), program.install);
+    }
+    if (program.project) {
+        generate(ph.resolve(__dirname, "../template/project"), program.install);
     }
 }
 
