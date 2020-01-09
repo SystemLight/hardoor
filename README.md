@@ -16,7 +16,7 @@ npm install hardoor -g
 
 # Use hardoor to generate project template after V0.3.0
 
-## generate project
+## generate a empty project
 
 ```
 execute `hardoor -p` in your empty folder.
