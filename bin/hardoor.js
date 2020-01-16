@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-const program = require('commander');
+const readline = require('readline');
 const ph = require('path');
 const child_process = require('child_process');
-
+const program = require('commander');
 const {copy} = require("halfigs/node8-basic/shutil");
+
 const info = require(ph.resolve(__dirname, "../package.json"));
 
 
@@ -16,12 +17,16 @@ function generate(template_dir, install) {
 }
 
 function npmInstall() {
-    console.log("wait npm install");
-    let P = ["\\", "|", "/", "-"];
+    console.log("wait npm install " + new Date().toLocaleString());
+    console.log("Takes about two minutes.");
+    let loadIcon = ["\\", "|", "/", "-"];
     let x = 0;
+    let y = 0;
     let waitTimer = setInterval(function () {
-        process.stdout.write("\r" + P[x++]);
+        readline.cursorTo(process.stdout, 0, 3);
+        process.stdout.write(loadIcon[x++] + "   " + new Date().toLocaleString() + "   " + loadIcon[y++]);
         x &= 3;
+        y &= 3;
     }, 250);
     const install = child_process.exec("npm install", (error) => {
         if (error) {
@@ -41,10 +46,10 @@ function main() {
     program.version(info.version)
         .name(info.name);
     program
-        .option('-a, --antd', 'generate react antd project')
-        .option('-w, --webpack', 'generate react webpack project')
+        .option('-p, --project', 'generate a empty project')
+        .option('-a, --antd', 'generate react and antd project')
+        .option('-w, --webpack', 'generate react and webpack project')
         .option('-k, --koa', 'generate koa project')
-        .option('-p, --project', 'generate a project')
         .option('-i, --install', 'automatically execute npm install');
     program.parse(process.argv);
     if (program.antd) {
