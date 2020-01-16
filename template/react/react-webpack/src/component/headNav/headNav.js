@@ -2,7 +2,7 @@ import React from "react";
 import {NavLink} from "react-router-dom";
 
 import routes from "../../routes/routes";
-import http from '../../request/http';
+import http from '../../store/action/http';
 
 
 export default function HeadNav(props) {
