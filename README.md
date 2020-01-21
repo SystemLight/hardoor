@@ -16,36 +16,10 @@ npm install hardoor -g
 
 # Use hardoor to generate project template after V0.3.0
 
-## generate a empty project
+## View parameter description
 
 ```
-execute `hardoor -p` in your empty folder.
-```
-
-## generate `koa` project
-
-```
-execute `hardoor -k` in your empty folder.
-```
-
-## generate `react` and `webpack` project
-
-```
-execute `hardoor -w` in your empty folder.
-```
-
-## generate `react` and `antd` project
-
-```
-execute `hardoor -a` in your empty folder.
-```
-
-## automatically execute npm install
-```
-add arguments -i
-
-such as:
-    hardoor -w -i
+hardoor -h
 ```
 
 # Other lib
