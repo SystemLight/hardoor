@@ -1,7 +1,6 @@
 # react-webpack
 
-** 项目说明 **
-这是一个webpack配置项目模板，额外引入了其它需要的工具模块，参考技术栈。
+react-webpack是一个webpack配置的react项目模板，额外引入了其它需要的工具模块，参考技术栈。
 
 ## 技术栈
 
@@ -44,15 +43,22 @@
 - 简述
 
 ```
-`pages.config.js` 是一个webpack页面配置项，暂时还未实现完全动态化，目前你至少需要把你的页面名称写到pages参数中
-如果你只有一个页面：pages可以直接写成index，它对应你的src下的index.js文件，同时生成index.html
-多个文件情况下，你可以将pages设置为["index","about"]
-如果你的文件配置具有个性化内容，你可以写成[{pageName:"index",其它个性参数},{pageName:"about",其它个性参数}]
-这只是简单的讲解，实际上多页面情况涉及到代码拆分问题，需要进行chunks参数设置，同时要设置splitChunks
-具体怎么设置，这里不再提及，请参考更详细的说明
+`pages.config.js` 是一个webpack多页面应用配置项，暂时还未实现完全动态化。
+注意：如果你开发的是单页面应用无需改变pages.config.js的内容
+
+配置说明：
+pages：页面关联的js文件，这个配置关系到打包后生成的html文件数量
+
+例如：
+    只有一个index页面---pages:index
+    多个页面，如存在index和about页面---["index","about"]
+    如果页面需要特殊设置请传入一个对象---[{pageName:"index"}]
+
+更加复杂的页面分割优化：需要进行chunks参数设置，同时要设置splitChunks
+具体设置参考webpack chunks参数，chunks参数可以直接在`pages.config.js`中设置
 ```
 
-- 个性参数
+- 页面对象可配置参数
 
 ```
 {
@@ -67,12 +73,6 @@
 }
 ```
 
-- chunks
-
-```
-与webpack原始的chunks略有不同，你只需要写公共chunks名称就好，默认会把当前页面chunks包含进去
-```
-
 #### 2. 生产模式和开发模式
 
 ```
@@ -80,9 +80,25 @@
 开发模式下切记不要设置workEnv:production，会给webpack造成困扰
 ```
 
-#### 3. 注意事项
+#### 3. 资源模块化
 
 ```
 图片导入建议使用，require("图片路径")
 esModule默认被设置false，如果想启用请在webpack.config.js中设置
+```
+
+#### 4. 热更新HMR启用
+
+```
+webpack.config.js中启用hot参数
+
+index.js中监听模块变化，并执行替换逻辑
+
+    if (module.hot) { //告诉 webpack 接受热替换的模块
+        module.hot.accept('./print.js', function() {
+            // 当print.js模块变化时，执行的逻辑
+            // 更新逻辑得自己写
+        })
+    }
+
 ```

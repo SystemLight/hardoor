@@ -1,7 +1,6 @@
 # react
 
-** 项目说明 **
-这是一个create-react-app配置项目模板，额外引入了其它需要的工具模块，参考技术栈。
+react是一个create-react-app配置项目模板，额外引入了其它需要的工具模块，参考技术栈。
 
 ## 技术栈
 
@@ -24,20 +23,20 @@
 
 #### 前端
 
-- [x] antd
-- [x] moment
+- [ ] antd
+- [ ] moment
 - [x] react
-    - [x] react-router-dom
-    - [x] react-redux
-    - [x] reselect
-- [x] redux
-    - [x] redux-thunk
-- [x] axios
-- [x] less
+    - [ ] react-router-dom
+    - [ ] react-redux
+    - [ ] reselect
+- [ ] redux
+    - [ ] redux-thunk
+- [ ] axios
+- [ ] less
 
 ## 项目功能实现
 
-- [ ] 1.
+- [ ] 1.待写入
 
 ## 参考资料
 

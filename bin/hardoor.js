@@ -87,7 +87,7 @@ function main() {
     } else if (program.react) {
         switch (program.react) {
             case "null":
-                generate(ph.resolve(__dirname, "../template/project"), program.install);
+                generate(ph.resolve(__dirname, "../template/react"), program.install);
                 break;
             case "webpack":
                 generate(ph.resolve(__dirname, "../template/react-webpack"), program.install);

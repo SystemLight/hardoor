@@ -18,6 +18,7 @@ let splitChunks = {
             priority: -20,
             reuseExistingChunk: true
         },
+        // Separate react.js
         // react: {
         //     test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
         //     name: 'react',

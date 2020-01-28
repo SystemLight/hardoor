@@ -1,13 +1,12 @@
-# Koa_project
+# koa
 
-** Koa_project **
-koa项目的目录模板
+koa是一个koa项目的模板
 
 ## 技术栈
 
 #### 托管平台
 
-- [x] gitlab
+- [x] github
 
 #### 服务器
 
@@ -22,26 +21,23 @@ koa项目的目录模板
 
 - [x] nodejs8
     - [x] koa2
+        - [x] koa-body
+        - [x] koa-router
+        - [x] koa-send
+        - [x] koa-static
 
 #### 前端
 
-- [ ] 未知
-
+- [ ] 待写入
 
 ## 项目功能实现
 
-- [ ] 1.查看指定目录文件列表
-- [ ] 2.上传文件到指定目录
-- [ ] 3.下载指定目录下的指定文件
-- [ ] 4.删除定目录下的指定文件或文件夹
-- [ ] 5.在指定目录下新建文件夹
-- [ ] 6.重命名文件夹或文件
-
+- [ ] 1.待写入
 
 ## 参考资料
 
-#### 1. 安装koa
+#### 1. 写入文档
 
 ```
-npm install koa koa-router koa-static
+
 ```
