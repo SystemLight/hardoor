@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const req = axios.create({
+export const http = axios.create({
     baseURL: "/proxy",
     timeout: 20000
 });
