@@ -12,7 +12,12 @@ module.exports = function (api) {
                     chrome: "67",
                     safari: "11.1",
                 },
-                modules: false
+                useBuiltIns: "usage",
+                modules: false,
+                corejs: {
+                    "version": 3,
+                    "proposals": true,
+                }
             },
         ],
         "@babel/react"

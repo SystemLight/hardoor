@@ -18,17 +18,21 @@ let splitChunks = {
             priority: -20,
             reuseExistingChunk: true
         },
-        // Separate react.js
-        // react: {
-        //     test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-        //     name: 'react',
-        //     chunks: 'all',
-        // }
+        react: {
+            // Separate react.js
+            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            name: 'react',
+            chunks: 'all',
+        }
     }
 };
 
 module.exports = {
-    // workEnv : development or production
-    workEnv: "development", splitChunks,
-    pages: "index"
+    splitChunks,
+    pages: [
+        {
+            pageName: "index",
+            chunks: ["react"]
+        }
+    ]
 };
