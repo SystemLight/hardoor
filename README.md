@@ -16,15 +16,22 @@ npm install hardoor -g
 
 # Use hardoor to generate project template after V0.3.0
 
+## View list of installable templates
+
+```
+hardoor list
+```
+
+## Install templates, such as vue templates
+
+```
+hardoor install vue -a
+```
+
 ## View parameter description
 
 ```
-hardoor -h
-```
-
-# Other lib
-```
-Too lazy to say
+hardoor install -h
 ```
 
 # Note
