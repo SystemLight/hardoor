@@ -1,8 +1,8 @@
 import React from "react";
 
-import Home from "../page/home/home";
-import About from "../page/about/about";
-import View404 from "../page/status/view404";
+import Home from "../page/home/home.jsx";
+import About from "../page/about/about.jsx";
+import View404 from "../page/status/view404.jsx";
 
 
 const routes = [
