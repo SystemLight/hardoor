@@ -16,12 +16,13 @@ module.exports = (env, argv) => {
         minifyCSS: true
     };
 
-    let getDevServer = workEnv === "development" ? {
+    let getDevServer = {
         contentBase: './dist',
         inline: true,
         historyApiFallback: true,
         hot: false,
         hotOnly: false,
+        open: true,
         proxy: {
             '/proxy':
                 {
@@ -30,7 +31,7 @@ module.exports = (env, argv) => {
                     changeOrigin: true
                 }
         }
-    } : undefined;
+    };
 
     let getHtmlPage = function (pages) {
         let htmlArray = [];
@@ -96,6 +97,11 @@ module.exports = (env, argv) => {
             path: ph.resolve(__dirname, "dist"),
             publicPath: "/"
         },
+        externals: {},
+        optimization: {splitChunks: splitChunks},
+        resolve: {
+            extensions: [".js", ".ts", ".jsx", ".tsx"]
+        },
         module: {
             rules: [
                 {
@@ -145,6 +151,11 @@ module.exports = (env, argv) => {
                     exclude: /(node_modules|bower_components)/
                 },
                 {
+                    test: /\.tsx?$/,
+                    exclude: /(node_modules|bower_components)/,
+                    loader: 'ts-loader'
+                },
+                {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                     use: [{
                         loader: 'url-loader',
@@ -170,7 +181,6 @@ module.exports = (env, argv) => {
                 }
             ]),
             ...getHtmlPage(pages)
-        ],
-        optimization: {splitChunks: splitChunks}
+        ]
     }
 };
