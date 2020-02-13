@@ -1,6 +1,6 @@
 # project
 
-project是一个web项目模板
+一个最简单的web项目模板
 
 ## 技术栈
 

@@ -1,7 +1,7 @@
 {
   "name": "@template/node-commander",
   "version": "1.0.0",
-  "description": "",
+  "description": "A node-based console application project template",
   "private": true,
   "bin": {
     "node-commander": "./bin/index.js"

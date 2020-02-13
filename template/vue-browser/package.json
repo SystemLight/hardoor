@@ -1,7 +1,7 @@
 {
   "name": "@template/vue-browser",
   "version": "1.0.0",
-  "description": "",
+  "description": "Use vue in traditional web projects",
   "private": true,
   "scripts": {
     "test": "echo \"no test\" && exit 0",

@@ -1,7 +1,7 @@
 {
   "name": "@template/koa",
   "version": "1.0.0",
-  "description": "",
+  "description": "A template for a node project containing a koa framework",
   "private": true,
   "scripts": {
     "test": "echo \"no test\" && exit 0"

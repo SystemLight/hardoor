@@ -153,7 +153,7 @@ module.exports = (env, argv) => {
                 {
                     test: /\.tsx?$/,
                     exclude: /(node_modules|bower_components)/,
-                    loader: 'ts-loader'
+                    loader: 'babel-loader!ts-loader'
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

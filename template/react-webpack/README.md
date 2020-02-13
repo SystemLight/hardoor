@@ -1,6 +1,6 @@
 # react-webpack
 
-react-webpack是一个webpack配置的react项目模板，额外引入了其它需要的工具模块，参考技术栈。
+一个webpack配置的react项目模板，包含typescript和一些拓展内容。
 
 ## 技术栈
 

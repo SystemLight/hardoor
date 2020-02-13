@@ -1,7 +1,7 @@
 {
   "name": "@template/react-webpack",
   "version": "1.0.0",
-  "description": "",
+  "description": "A webpack configured react project template with typescript and some extensions",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --open",
