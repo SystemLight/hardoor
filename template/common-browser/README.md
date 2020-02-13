@@ -1,6 +1,6 @@
 # common-browser
 
-common-browser是一个web项目模板采用原生html开发模式
+一个采用原生html开发模式web项目模板
 
 ## 技术栈
 

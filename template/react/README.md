@@ -1,6 +1,6 @@
 # react
 
-react是一个create-react-app配置项目模板，额外引入了其它需要的工具模块，参考技术栈。
+create-react-app创建的项目模板，拓展了原有内容。
 
 ## 技术栈
 

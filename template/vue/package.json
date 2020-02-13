@@ -1,6 +1,7 @@
 {
   "name": "@template/vue",
   "version": "0.1.0",
+  "description": "Project templates created by vue-cli",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

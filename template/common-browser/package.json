@@ -1,7 +1,7 @@
 {
   "name": "@template/common-browser",
   "version": "1.0.0",
-  "description": "",
+  "description": "A web project template using native html development mode",
   "private": true,
   "scripts": {
     "test": "echo \"no test\" && exit 0"

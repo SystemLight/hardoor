@@ -1,6 +1,6 @@
 # react-antd
 
-react-antd是一个create-react-app配置的antd项目模板，额外引入了其它需要的工具模块，参考技术栈
+create-react-app创建的antd项目模板
 
 ## 技术栈
 

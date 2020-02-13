@@ -1,6 +1,6 @@
 # node-commander
 
-node-commander是一个基于node的控制台应用程序项目模板
+一个基于node的控制台应用程序项目模板
 
 ## 技术栈
 

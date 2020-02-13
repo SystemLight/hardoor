@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const commander = require("commander");
 const fs = require("fs-extra");
-const pt = require("path");
+const ph = require("path");
 const {install} = require("./npmInstall");
 const hardoor = require("../package.json");
 
@@ -23,10 +23,10 @@ commander
     .option('-a, --auto', "Run `npm i` to install automatically")
     .option('-f, --force', "Force overwrite existing files")
     .action(function (template, {auto, force}) {
-        let sourceDir = pt.join(__dirname, "../template/");
+        let sourceDir = ph.join(__dirname, "../template/");
         let dir = fs.readdirSync(sourceDir);
         if (dir.includes(template)) {
-            let sourcePath = pt.join(sourceDir, template);
+            let sourcePath = ph.join(sourceDir, template);
             let targetPath = process.cwd();
             fs.copy(sourcePath, targetPath, {overwrite: !!force, errorOnExist: !!!force})
                 .then(function () {
@@ -46,8 +46,12 @@ commander
     .command('list')
     .description('View a list of currently available templates')
     .action(function () {
-        let dir = fs.readdirSync(pt.join(__dirname, "../template/"));
-        console.log(dir.join("\n"));
+        let templatePath = ph.join(__dirname, "../template/");
+        let templates = fs.readdirSync(templatePath);
+        templates.forEach(template => {
+            let description = require(ph.join(templatePath, template, "package.json")).description;
+            console.log("[" + template + "]", "---", description, "\n")
+        });
         childFlag = true;
     });
 

@@ -1,7 +1,7 @@
 {
   "name": "@template/common",
   "version": "1.0.0",
-  "description": "",
+  "description": "One of the simplest web project templates",
   "private": true,
   "scripts": {
     "test": "echo \"no test\" && exit 0"

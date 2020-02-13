@@ -1,6 +1,6 @@
-# jquery
+# node-webpack
 
-jquery是一个包含jquery库的传统web项目模板
+一个webpack配置的node项目模板，包含typescript。
 
 ## 技术栈
 
@@ -10,21 +10,20 @@ jquery是一个包含jquery库的传统web项目模板
 
 #### 服务器
 
-- [ ] 待写入
-    - [ ] 待写入
+- [ ] windows server
 
 #### 数据库
 
-- [ ] 待写入
+- [ ] sqlite
 
 #### 后端
 
-- [ ] nodejs8
+- [x] node8
     - [ ] koa2
 
 #### 前端
 
-- [x] jQuery
+- 待写入
 
 ## 项目功能实现
 
@@ -32,8 +31,4 @@ jquery是一个包含jquery库的传统web项目模板
 
 ## 参考资料
 
-#### 1. 写入文档
-
-```
-
-```
+#### 1. 待写入

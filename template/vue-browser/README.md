@@ -1,6 +1,6 @@
 # vue-browser
 
-vue-browser是一个在传统无模块无需打包的web项目中使用vue库的模板
+传统web项目下使用vue
 
 ## 技术栈
 
