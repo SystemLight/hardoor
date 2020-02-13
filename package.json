@@ -14,7 +14,23 @@
     "url": "git+https://github.com/SystemLight/hardoor.git"
   },
   "keywords": [
-    "hardoor"
+    "hardoor",
+    "cli-app",
+    "cli",
+    "front-end",
+    "build",
+    "web",
+    "node",
+    "tool",
+    "automatically",
+    "generate templates",
+    "front-end project",
+    "scaffold",
+    "脚手架",
+    "自动构建",
+    "项目模板",
+    "生成工具",
+    "生成web项目"
   ],
   "author": "SystemLight",
   "license": "MIT",
