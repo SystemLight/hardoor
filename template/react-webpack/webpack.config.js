@@ -27,8 +27,10 @@ module.exports = (env, argv) => {
             '/proxy':
                 {
                     target: 'https://cnodejs.org/',
+                    secure: true,
                     pathRewrite: {'^/proxy': ''},
-                    changeOrigin: true
+                    changeOrigin: true,
+                    cookieDomainRewrite: ".cnodejs.org"
                 }
         }
     };

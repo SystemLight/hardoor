@@ -7,8 +7,10 @@ module.exports = function (app) {
             '/proxy',
             {
                 target: 'https://cnodejs.org/',
+                secure: true,
                 pathRewrite: {'^/proxy': ''},
-                changeOrigin: true
+                changeOrigin: true,
+                cookieDomainRewrite: ".cnodejs.org"
             }
         )
     );

@@ -16,7 +16,6 @@ function App(props) {
 
     return (
         <>
-            <App2>asdfas</App2>
             <p>导航栏会改变内容面板</p>
             <button onClick={(e) => {
                 dispatch({type: "RESET"})
