@@ -1,6 +1,6 @@
-# react-webpack
+# common-webpack
 
-一个webpack配置的react项目模板，包含typescript和一些拓展内容。
+基于webpack的web项目模板
 
 ## 技术栈
 
@@ -10,27 +10,23 @@
 
 #### 服务器
 
-- [ ] windows server
+- [ ] 待写入
+    - [ ] 待写入
 
 #### 数据库
 
-- [ ] sqlite
+- [ ] 待写入
 
 #### 后端
 
-- [x] node8
+- [ ] nodejs8
     - [ ] koa2
+- [x] webpack
+- [x] typescript
 
 #### 前端
 
-- [x] react
-    - [x] react-router-dom
-    - [x] react-redux
-    - [x] reselect
-- [x] redux
-    - [x] redux-thunk
-- [x] axios
-- [x] less
+- [ ] 待写入
 
 ## 项目功能实现
 
@@ -99,8 +95,7 @@ index.js中监听模块变化，并执行替换逻辑
 #### 4. 支持说明
 
 ```
-支持ts和tsx语法
-支持jsx解析，支持服务器代理
+支持ts语法
 支持css模块化，模块化导入请后缀带有module.css
 支持less和less模块化，模块化导入请后缀带有module.less
 支持文件导入，并且小文件自动编译base64，大文件单独导出
