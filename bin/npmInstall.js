@@ -9,7 +9,7 @@ function install(callback) {
             console.error(error);
             return;
         }
-        console.log("done install");
+        console.log("finish installation");
         console.log("enjoy the day")
     }).stdout.on('data', (data) => {
         loading.stop();

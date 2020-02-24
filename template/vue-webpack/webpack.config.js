@@ -3,6 +3,7 @@ const ph = require("path");
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const {pages, splitChunks} = require("./pages.config");
 
@@ -93,7 +94,14 @@ module.exports = (env, argv) => {
         devtool: workEnv === "development" ? 'inline-source-map' : "source-map",
         context: __dirname,
         resolve: {
-            extensions: [".js", ".ts", ".jsx", ".tsx"]
+            extensions: ['.js', '.vue', '.json'],
+            alias: {
+                '@': ph.resolve('src'),
+                '@views': ph.resolve('src/views'),
+                '@comp': ph.resolve('src/components'),
+                '@core': ph.resolve('src/core'),
+                '@utils': ph.resolve('src/utils')
+            }
         },
         devServer: getDevServer,
         optimization: {splitChunks: splitChunks},
@@ -148,14 +156,17 @@ module.exports = (env, argv) => {
                     ]
                 },
                 {
-                    test: /(\.jsx|\.js)$/,
+                    test: /\.js$/,
                     exclude: /(node_modules|bower_components)/,
                     loader: 'babel-loader'
                 },
                 {
-                    test: /\.tsx?$/,
-                    exclude: /(node_modules|bower_components)/,
-                    loader: 'babel-loader!ts-loader'
+                    test: /\.vue$/,
+                    loader: 'vue-loader',
+                    options: {
+                        loaders: {}
+                        // other vue-loader options go here
+                    }
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -174,6 +185,7 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
+            new VueLoaderPlugin(),
             new CleanWebpackPlugin(),
             new CopyWebpackPlugin([
                 {

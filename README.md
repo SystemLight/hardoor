@@ -22,10 +22,10 @@ npm install hardoor -g
 hardoor list
 ```
 
-## Install templates, such as vue templates
+## Install templates, such as React templates
 
 ```
-hardoor install vue -a
+hardoor install react-webpack -a
 ```
 
 ## View parameter description

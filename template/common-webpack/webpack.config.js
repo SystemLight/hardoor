@@ -91,8 +91,12 @@ module.exports = (env, argv) => {
     return {
         mode: workEnv,
         devtool: workEnv === "development" ? 'inline-source-map' : "source-map",
-        devServer: getDevServer,
         context: __dirname,
+        resolve: {
+            extensions: [".js", ".ts", ".jsx", ".tsx"]
+        },
+        devServer: getDevServer,
+        optimization: {splitChunks: splitChunks},
         entry: getEntry(pages),
         output: {
             filename: "js/[name].bundle.js",
@@ -100,19 +104,16 @@ module.exports = (env, argv) => {
             publicPath: "/"
         },
         externals: {},
-        optimization: {splitChunks: splitChunks},
-        resolve: {
-            extensions: [".js", ".ts", ".jsx", ".tsx"]
-        },
         module: {
             rules: [
                 {
                     test: /^(?!.*\.module).*\.less$/,
-                    loader: 'style-loader!css-loader!less-loader',
-                    exclude: /(node_modules|bower_components)/
+                    exclude: /(node_modules|bower_components)/,
+                    loader: 'style-loader!css-loader!less-loader'
                 },
                 {
                     test: /^(.*\.module).less$/,
+                    exclude: /(node_modules|bower_components)/,
                     use: [
                         'style-loader',
                         {
@@ -124,16 +125,16 @@ module.exports = (env, argv) => {
                             }
                         },
                         "less-loader"
-                    ],
-                    exclude: /(node_modules|bower_components)/
+                    ]
                 },
                 {
                     test: /^(?!.*\.module).*\.css$/,
+                    exclude: /(node_modules|bower_components)/,
                     loader: 'style-loader!css-loader',
-                    exclude: /(node_modules|bower_components)/
                 },
                 {
                     test: /^(.*\.module).css$/,
+                    exclude: /(node_modules|bower_components)/,
                     use: [
                         'style-loader',
                         {
@@ -144,13 +145,12 @@ module.exports = (env, argv) => {
                                 },
                             }
                         }
-                    ],
-                    exclude: /(node_modules|bower_components)/
+                    ]
                 },
                 {
                     test: /(\.jsx|\.js)$/,
-                    loader: 'babel-loader',
-                    exclude: /(node_modules|bower_components)/
+                    exclude: /(node_modules|bower_components)/,
+                    loader: 'babel-loader'
                 },
                 {
                     test: /\.tsx?$/,
@@ -159,6 +159,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                    exclude: /(node_modules|bower_components)/,
                     use: [{
                         loader: 'url-loader',
                         options: {
@@ -168,8 +169,7 @@ module.exports = (env, argv) => {
                             publicPath: '/',
                             esModule: false
                         }
-                    }],
-                    exclude: /(node_modules|bower_components)/
+                    }]
                 },
             ]
         },

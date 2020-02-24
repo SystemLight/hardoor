@@ -7,9 +7,12 @@ module.exports = (env, argv) => {
     let workEnv = argv.mode;
 
     return {
-        target: "node",
         mode: workEnv,
+        target: "node",
         context: __dirname,
+        resolve: {
+            extensions: [".js", ".ts"]
+        },
         entry: {
             "index": "./src/index.ts"
         },
@@ -19,9 +22,6 @@ module.exports = (env, argv) => {
             libraryTarget: 'commonjs2'
         },
         externals: {},
-        resolve: {
-            extensions: [".js", ".ts"]
-        },
         module: {
             rules: [
                 {

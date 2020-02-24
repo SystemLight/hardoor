@@ -7,28 +7,23 @@
     "**/*.spec.ts"
   ],
   "compilerOptions": {
-    "target": "es5",
-    "outDir": "./dist/",
-    "sourceMap": false,
+    "target": "esNext",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "removeComments": true,
     "strict": true,
     "jsx": "preserve",
-    "allowJs": true,
-    "module": "esnext",
+    "module": "esNext",
+    "resolveJsonModule": false,
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "isolatedModules": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true,
-    "noEmit": false,
     "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "noEmit": false,
+    "outDir": "./dist/",
     "declaration": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
     "typeRoots": [
       "node_modules/@types"
     ]

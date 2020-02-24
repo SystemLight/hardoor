@@ -7,9 +7,12 @@ module.exports = (env, argv) => {
     let workEnv = argv.mode;
 
     return {
-        target: "web",
         mode: workEnv,
+        target: "web",
         context: __dirname,
+        resolve: {
+            extensions: [".js", ".ts"]
+        },
         entry: {
             "index": "./src/index.ts"
         },
@@ -20,9 +23,6 @@ module.exports = (env, argv) => {
             globalObject: 'this'
         },
         externals: {},
-        resolve: {
-            extensions: [".js", ".ts"]
-        },
         module: {
             rules: [
                 {
