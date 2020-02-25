@@ -19,6 +19,8 @@ module.exports = (env, argv) => {
 
     let getDevServer = {
         contentBase: './dist',
+        index: 'index.html',
+        openPage: '',
         inline: true,
         historyApiFallback: true,
         hot: false,
@@ -53,6 +55,9 @@ module.exports = (env, argv) => {
             if (typeof page === "string") {
                 defaultPageOpt["pageName"] = page;
             } else {
+                if (page.notHtml) {
+                    return;
+                }
                 defaultPageOpt = Object.assign(defaultPageOpt, page);
             }
             htmlArray.push(

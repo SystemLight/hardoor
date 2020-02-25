@@ -62,14 +62,15 @@ pages：页面关联的js文件，这个配置关系到打包后生成的html文
 
 ```
 {
+    notHtml: false,  //不需要生成对应html页面的出口文件
     title: '页面标题',
     keywords: "页面关键字",
     description: "页面描述",
     iconPath: "./favicon.ico",
     style: "页面全局style",
-    pageName: "index",//页面名称
-    template: "./draft/template.html",//页面模板
-    chunks: []//打入页面的chunks，与splitChunks参数配置有关
+    pageName: "index",  //页面名称
+    template: "./draft/template.html",  //页面模板
+    chunks: []  //打入页面的chunks，与splitChunks参数配置有关
 }
 ```
 
