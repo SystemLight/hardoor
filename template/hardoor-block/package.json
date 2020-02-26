@@ -1,0 +1,11 @@
+{
+  "name": "@template/hardoor-block",
+  "version": "1.0.0",
+  "description": "Template block development template for hardoor",
+  "private": true,
+  "scripts": {
+    "test": "echo \"no test\" && exit 0"
+  },
+  "author": "SystemLight",
+  "license": "MIT"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@block/plain",
+  "version": "1.0.0",
+  "description": "Remove the default style",
+  "private": true,
+  "scripts": {
+    "test": "echo \"no test\" && exit 0"
+  },
+  "author": "SystemLight",
+  "license": "MIT"
+}

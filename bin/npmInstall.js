@@ -2,9 +2,10 @@ const child_process = require('child_process');
 const loading = require("./loading");
 
 
-function install(callback) {
+function install(options) {
+    let {packageName, callback} = options || {};
     loading.start();
-    child_process.exec("npm install", (error) => {
+    child_process.exec("npm install " + (packageName || ""), (error) => {
         if (error) {
             console.error(error);
             return;
@@ -14,7 +15,8 @@ function install(callback) {
     }).stdout.on('data', (data) => {
         loading.stop();
         console.log(data);
-        callback&&callback();
+    }).on("end", () => {
+        callback && callback();
     });
 }
 

@@ -1,0 +1,11 @@
+{
+  "name": "@block/mobile",
+  "version": "1.0.0",
+  "description": "Mobile development patches",
+  "private": true,
+  "scripts": {
+    "test": "echo \"no test\" && exit 0"
+  },
+  "author": "SystemLight",
+  "license": "MIT"
+}

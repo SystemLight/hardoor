@@ -98,7 +98,7 @@ module.exports = (env, argv) => {
         devtool: workEnv === "development" ? 'inline-source-map' : "source-map",
         context: __dirname,
         resolve: {
-            extensions: [".js", ".ts", ".jsx", ".tsx"]
+            extensions: [".js", ".ts"]
         },
         devServer: getDevServer,
         optimization: {splitChunks: splitChunks},
@@ -153,12 +153,12 @@ module.exports = (env, argv) => {
                     ]
                 },
                 {
-                    test: /(\.jsx|\.js)$/,
+                    test: /.js$/,
                     exclude: /(node_modules|bower_components)/,
                     loader: 'babel-loader'
                 },
                 {
-                    test: /\.tsx?$/,
+                    test: /\.ts$/,
                     exclude: /(node_modules|bower_components)/,
                     loader: 'babel-loader!ts-loader'
                 },

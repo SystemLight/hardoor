@@ -1,0 +1,11 @@
+{
+  "name": "@block/vue-router",
+  "version": "1.0.0",
+  "description": "Add vue-router for project",
+  "private": true,
+  "scripts": {
+    "test": "echo \"no test\" && exit 0"
+  },
+  "author": "SystemLight",
+  "license": "MIT"
+}

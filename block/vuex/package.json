@@ -1,0 +1,11 @@
+{
+  "name": "@block/vuex",
+  "version": "1.0.0",
+  "description": "Add vuex for project",
+  "private": true,
+  "scripts": {
+    "test": "echo \"no test\" && exit 0"
+  },
+  "author": "SystemLight",
+  "license": "MIT"
+}

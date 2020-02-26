@@ -6,8 +6,6 @@
 Hardoor can automatically generate front-end project templates.   
 NPM page: https://www.npmjs.com/package/hardoor
 
-You might more like [yoman](https://github.com/yeoman/yo?_blank)
-
 # Installation
 
 ```
@@ -20,6 +18,10 @@ npm install hardoor -g
 
 ```
 hardoor list
+
+or
+
+hardoor list -b
 ```
 
 ## Install templates, such as React templates
@@ -34,9 +36,16 @@ hardoor install react-webpack -a
 hardoor install -h
 ```
 
+## Inject vue-router template fragment into the project
+
+```
+hardoor i vue-router -b -p ./src
+```
+
 # Note
 
 - If installation is slow, change npm repository
+- Use `hardoor list -b` when the template lacks features to see if there are suitable patches
 
 # Resources
 
