@@ -46,6 +46,7 @@ hardoor i vue-router -b -p ./src
 
 - If installation is slow, change npm repository
 - Use `hardoor list -b` when the template lacks features to see if there are suitable patches
+- Use `hardoor install -b <patch>` must be in the project path
 
 # Resources
 
