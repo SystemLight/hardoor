@@ -18,12 +18,13 @@ function installAction(template, {block, auto, force, path}) {
         let targetPath = ph.join(process.cwd(), path || "");
         fs.copy(sourcePath, targetPath, {overwrite: !!force, errorOnExist: !!!force})
             .then(function () {
-                !block && process.chdir(targetPath) && fs.rename("./gitignore", "./.gitignore");
                 console.log("Generate template successfully");
                 if (block) {
                     const afterScript = require(ph.normalize(sourcePath + "/../"));
                     afterScript(install);
-                    return;
+                } else {
+                    process.chdir(targetPath);
+                    fs.rename("./gitignore", "./.gitignore");
                 }
                 if (auto && !block) {
                     install();
