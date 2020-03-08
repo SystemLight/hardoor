@@ -4,8 +4,11 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const PrerenderSPAPlugin = require('prerender-spa-plugin');
+// const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const {pages, splitChunks} = require("./pages.config");
+const {splitChunks, chunksOnAllPages, pages} = require("./pages.config");
 
 
 module.exports = (env, argv) => {
@@ -42,8 +45,14 @@ module.exports = (env, argv) => {
         let htmlArray = [];
         pages = typeof pages === "string" ? [pages] : pages;
         pages.forEach((page) => {
+            if (page.hasOwnProperty("notHtml") && page.notHtml) {
+                // 如果页面设置了notHtml参数将不创建对应的html页面
+                return;
+            }
+
+            // 初始默认参数
             let defaultPageOpt = {
-                title: 'my react app',
+                title: 'my vue app',
                 keywords: "关键词",
                 description: "描述",
                 iconPath: "./favicon.ico",
@@ -52,14 +61,35 @@ module.exports = (env, argv) => {
                 template: "./draft/template.html",
                 chunks: []
             };
-            if (typeof page === "string") {
-                defaultPageOpt["pageName"] = page;
-            } else {
-                if (page.notHtml) {
-                    return;
-                }
-                defaultPageOpt = Object.assign(defaultPageOpt, page);
+
+            switch (typeof page) {
+                case "string":
+                    defaultPageOpt["pageName"] = page;
+                    break;
+                case "object":
+                    defaultPageOpt = Object.assign(defaultPageOpt, page);
+                    break;
+                default:
+                    break;
             }
+
+            if (typeof defaultPageOpt.chunks === "string") {
+                defaultPageOpt["chunks"] = [defaultPageOpt["chunks"]];
+            }
+
+            let chunks;
+            switch (typeof chunksOnAllPages) {
+                case "string":
+                    chunks = new Set([defaultPageOpt.pageName, ...defaultPageOpt.chunks, chunksOnAllPages]);
+                    break;
+                case "object":
+                    chunks = new Set([defaultPageOpt.pageName, ...defaultPageOpt.chunks, ...chunksOnAllPages]);
+                    break;
+                default:
+                    chunks = [defaultPageOpt.pageName, ...defaultPageOpt.chunks];
+                    break;
+            }
+
             htmlArray.push(
                 new HtmlWebpackPlugin({
                     title: defaultPageOpt.title,
@@ -72,7 +102,7 @@ module.exports = (env, argv) => {
                     template: defaultPageOpt.template,
                     inject: true,
                     minify: getMinify,
-                    chunks: [defaultPageOpt.pageName, ...defaultPageOpt.chunks]
+                    chunks: [...chunks]
                 })
             );
         });
@@ -122,43 +152,53 @@ module.exports = (env, argv) => {
                 {
                     test: /^(?!.*\.module).*\.less$/,
                     exclude: /(node_modules|bower_components)/,
-                    loader: 'style-loader!css-loader!less-loader'
+                    use: ExtractTextPlugin.extract({
+                        fallback: "style-loader",
+                        use: ["css-loader", "less-loader"]
+                    })
                 },
                 {
                     test: /^(.*\.module).less$/,
                     exclude: /(node_modules|bower_components)/,
-                    use: [
-                        'style-loader',
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules: {
-                                    localIdentName: "[name]-[hash:base64:6]",
-                                },
-                            }
-                        },
-                        "less-loader"
-                    ]
+                    use: ExtractTextPlugin.extract({
+                        fallback: "style-loader",
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: {
+                                        localIdentName: "[name]-[hash:base64:6]",
+                                    },
+                                }
+                            },
+                            "less-loader"
+                        ]
+                    })
                 },
                 {
                     test: /^(?!.*\.module).*\.css$/,
                     exclude: /(node_modules|bower_components)/,
-                    loader: 'style-loader!css-loader'
+                    use: ExtractTextPlugin.extract({
+                        fallback: "style-loader",
+                        use: "css-loader"
+                    })
                 },
                 {
                     test: /^(.*\.module).css$/,
                     exclude: /(node_modules|bower_components)/,
-                    use: [
-                        'style-loader',
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                modules: {
-                                    localIdentName: "[name]-[hash:base64:6]",
-                                },
+                    use: ExtractTextPlugin.extract({
+                        fallback: "style-loader",
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: {
+                                        localIdentName: "[name]-[hash:base64:6]",
+                                    },
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    })
                 },
                 {
                     test: /\.js$/,
@@ -199,7 +239,18 @@ module.exports = (env, argv) => {
                     ignore: ['.*']
                 }
             ]),
-            ...getHtmlPage(pages)
+            new ExtractTextPlugin({
+                filename: "css/[name].style.css"
+            }),
+            // new PrerenderSPAPlugin({
+            //     staticDir: ph.resolve(__dirname, "dist"),
+            //     routes: ['/', '/about'],
+            //     renderer: new Renderer({
+            //         headless: false,
+            //         renderAfterDocumentEvent: 'pre-render'
+            //     })
+            // }),
+            ...getHtmlPage(pages),
         ]
     }
 };

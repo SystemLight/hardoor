@@ -19,7 +19,7 @@ let splitChunks = {
             reuseExistingChunk: true
         },
         react: {
-            // Separate react.js
+            // Define a chunk named react
             test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
             name: 'react',
             chunks: 'all',
@@ -29,10 +29,6 @@ let splitChunks = {
 
 module.exports = {
     splitChunks,
-    pages: [
-        {
-            pageName: "index",
-            chunks: ["react"]
-        }
-    ]
+    chunksOnAllPages: "react",
+    pages: "index"
 };

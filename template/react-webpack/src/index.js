@@ -1,6 +1,6 @@
 import './public.css';
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from "react-router-dom";
 import {Provider, useDispatch} from 'react-redux';
@@ -13,6 +13,11 @@ import RouteView from "./routes/routeView";
 function App(props) {
     // App组件为全局唯一组件，全局根组件
     let dispatch = useDispatch();
+
+    useEffect(function () {
+        // 预渲染配置项
+        // document.dispatchEvent(new Event('pre-render'));
+    }, []);
 
     return (
         <>

@@ -19,7 +19,7 @@ let splitChunks = {
             reuseExistingChunk: true
         },
         vue: {
-            // Separate vue.js
+            // Define a chunk named vue
             test: /[\\/]node_modules[\\/](vue)[\\/]/,
             name: 'vue',
             chunks: 'all',
@@ -29,10 +29,6 @@ let splitChunks = {
 
 module.exports = {
     splitChunks,
-    pages: [
-        {
-            pageName: "index",
-            chunks: ["vue"]
-        }
-    ]
+    chunksOnAllPages: "vue",
+    pages: "index"
 };
