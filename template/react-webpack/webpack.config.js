@@ -42,7 +42,9 @@ module.exports = (env, argv) => {
 
     let getHtmlPage = function (pages) {
         let htmlArray = [];
-        pages = typeof pages === "string" ? [pages] : pages;
+        if (!Array.isArray(pages)) {
+            pages = [pages];
+        }
         pages.forEach((page) => {
             if (page.hasOwnProperty("notHtml") && page.notHtml) {
                 // 如果页面设置了notHtml参数将不创建对应的html页面
@@ -110,7 +112,9 @@ module.exports = (env, argv) => {
 
     let getEntry = function (pages) {
         let entryObject = {};
-        pages = typeof pages === "string" ? [pages] : pages;
+        if (!Array.isArray(pages)) {
+            pages = [pages];
+        }
         pages.forEach(page => {
             let key;
             if (typeof page === "string") {
