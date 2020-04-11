@@ -7,8 +7,33 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 // const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const {splitChunks, chunksOnAllPages, pages} = require("./pages.config");
+const {
+    splitChunks,
+    chunksOnAllPages,
+    pages,
+    isExtractCss
+} = require("./pages.config");
 
+
+function getExtractTextPlugin() {
+    if (isExtractCss) {
+        return [
+            new ExtractTextPlugin({
+                filename: "css/[name].style.css"
+            })
+        ];
+    }
+    return [];
+}
+
+function getExtract(opt) {
+    if (isExtractCss) {
+        return ExtractTextPlugin.extract(opt);
+    } else {
+        opt.use.unshift(opt.fallback);
+        return [...opt.use];
+    }
+}
 
 module.exports = (env, argv) => {
     let workEnv = argv.mode;
@@ -149,16 +174,16 @@ module.exports = (env, argv) => {
             rules: [
                 {
                     test: /^(?!.*\.module).*\.less$/,
-                    exclude: /(node_modules|bower_components)/,
-                    use: ExtractTextPlugin.extract({
+                    // exclude: /(node_modules|bower_components)/,
+                    use: getExtract({
                         fallback: "style-loader",
                         use: ["css-loader", "less-loader"]
                     })
                 },
                 {
                     test: /^(.*\.module).less$/,
-                    exclude: /(node_modules|bower_components)/,
-                    use: ExtractTextPlugin.extract({
+                    // exclude: /(node_modules|bower_components)/,
+                    use: getExtract({
                         fallback: "style-loader",
                         use: [
                             {
@@ -175,16 +200,16 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /^(?!.*\.module).*\.css$/,
-                    exclude: /(node_modules|bower_components)/,
-                    use: ExtractTextPlugin.extract({
+                    // exclude: /(node_modules|bower_components)/,
+                    use: getExtract({
                         fallback: "style-loader",
-                        use: "css-loader"
+                        use: ["css-loader"]
                     })
                 },
                 {
                     test: /^(.*\.module).css$/,
-                    exclude: /(node_modules|bower_components)/,
-                    use: ExtractTextPlugin.extract({
+                    // exclude: /(node_modules|bower_components)/,
+                    use: getExtract({
                         fallback: "style-loader",
                         use: [
                             {
@@ -233,9 +258,8 @@ module.exports = (env, argv) => {
                     ignore: ['.*']
                 }
             ]),
-            new ExtractTextPlugin({
-                filename: "css/[name].style.css"
-            }),
+            ...getExtractTextPlugin(),
+            // 如果需要预渲染，需要安装插件后，把这段代码注释去掉，并正常引入插件
             // new PrerenderSPAPlugin({
             //     staticDir: ph.resolve(__dirname, "dist"),
             //     routes: ['/', '/about'],

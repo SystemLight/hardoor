@@ -30,5 +30,6 @@ let splitChunks = {
 module.exports = {
     splitChunks,
     chunksOnAllPages: "react",
+    isExtractCss: false,
     pages: "index"
 };
