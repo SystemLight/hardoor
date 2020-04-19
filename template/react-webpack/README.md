@@ -46,6 +46,9 @@
 `pages.config.js` 是一个webpack多页面应用配置项，暂时还未实现完全动态化。
 注意：如果你开发的是单页面应用无需改变pages.config.js的内容
 
+pages针对的是多页面进行配置
+如果需要进行针对单页面，多个路由进行分块加载，请使用routes中的dynamic高阶组件
+
 配置说明：
 isExtractCss：boolean-----是否提取样式文件css或less到单独文件当中
 chunksOnAllPages：[string,array]-----多页面应用时配置所有页面都需要包含的chunk

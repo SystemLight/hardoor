@@ -2,10 +2,22 @@ import React from "react";
 import {Redirect} from "react-router-dom";
 
 import Home from "../views/home/home";
-import About from "../views/about/about";
 
 
 export let notFound = "/404";
+
+export function dynamic(imp, Loading) {
+    // 高阶组件，用于异步加载组件，这样可以让不同路由地址的组件分开加载
+    let Com = React.lazy(() => imp);
+    Loading = Loading || <></>;
+    return () => {
+        return (
+            <React.Suspense fallback={Loading}>
+                <Com/>
+            </React.Suspense>
+        );
+    }
+}
 
 export function RedirectDefaultPage() {
     // 重定向到默认页面
@@ -48,7 +60,7 @@ const routes = [
         id: "about",
         title: "关于",
         path: "/about/:id",
-        component: About,
+        component: dynamic(import(/* webpackChunkName: "login" */'../views/about/about')),
         exact: true,
     },
     {
