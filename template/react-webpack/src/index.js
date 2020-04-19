@@ -1,36 +1,26 @@
 import './public.css';
 
-import React, {useEffect} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from "react-router-dom";
-import {Provider, useDispatch} from 'react-redux';
+import {Provider} from 'react-redux';
 
 import store from "./store/store";
-import Navigation from "./component/navigation/navigation";
+import routes from "./routes/routes";
 import RouteView from "./routes/routeView";
 
 
 function App(props) {
     // App组件为全局唯一组件，全局根组件
-    let dispatch = useDispatch();
 
-    useEffect(function () {
-        // 预渲染配置项
-        // document.dispatchEvent(new Event('pre-render'));
-    }, []);
+    // useEffect(function () {
+    //     // 预渲染配置项
+    //     document.dispatchEvent(new Event('pre-render'));
+    // }, []);
 
     return (
         <>
-            <p>导航栏会改变内容面板</p>
-            <button onClick={(e) => {
-                dispatch({type: "RESET"})
-            }}>重置内容
-            </button>
-            <br/><br/><br/>
-            {/*导航组件*/}
-            <Navigation/>
-            {/*切换路由组件*/}
-            <RouteView/>
+            <RouteView routes={routes}/>
         </>
     );
 }

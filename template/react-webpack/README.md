@@ -110,3 +110,10 @@ index.js中监听模块变化，并执行替换逻辑
 支持less和less模块化，模块化导入请后缀带有module.less
 支持文件导入，并且小文件自动编译base64，大文件单独导出
 ```
+
+#### 5. 配合路由动态导入组件实现代码分割
+
+```
+// 该组件是动态加载的
+const Login = React.lazy(() => import(/* webpackChunkName: "login" */'../views/login/login'));
+```

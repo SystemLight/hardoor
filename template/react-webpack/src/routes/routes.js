@@ -1,48 +1,86 @@
 import React from "react";
+import {Redirect} from "react-router-dom";
 
-import Home from "../views/home/home.jsx";
-import About from "../views/about/about.jsx";
-import View404 from "../views/status/view404.jsx";
+import Home from "../views/home/home";
+import About from "../views/about/about";
 
+
+export let notFound = "/404";
+
+export function RedirectDefaultPage() {
+    // 重定向到默认页面
+    return (
+        <Redirect to={"/home/attention/"}/>
+    )
+}
+
+export function Redirect404() {
+    // 重定向到404页面当中
+    return (
+        <Redirect to={notFound}/>
+    )
+}
+
+export function NotFoundPage() {
+    // 404页面
+    return (
+        <div>
+            404:Not Found
+        </div>
+    );
+}
 
 const routes = [
     {
-        id: "home", // 唯一ID名称
-        title: "首页", // 导航显示的内容
-        isNav: true, // flag用于判断该项是否加入导航
-        to: "/",
+        id: "index",
+        title: "主页",
         path: "/",
+        component: RedirectDefaultPage,
         exact: true,
+    },
+    {
+        id: "home", // 子路由homeRoutes
+        title: "主页",
+        path: "/home",
         component: Home,
-        render(...props) {
-            return <Home {...props}/>
-        }
     },
     {
         id: "about",
         title: "关于",
-        isNav: true,
-        to: "/about",
-        path: "/about",
-        exact: true,
+        path: "/about/:id",
         component: About,
-        render(...props) {
-            return <About {...props}/>
-        }
+        exact: true,
     },
     {
-        id: "view404",
-        title: null,
-        isNav: false,
-        to: null,
-        path: null,
-        exact: false,
-        component: View404,
-        render(...props) {
-            return <View404 {...props}/>
-        }
+        id: "notFound",
+        title: "未发现",
+        path: ["*", "/404"],
+        component: NotFoundPage
     }
 ];
 
+// let home = "/home";
+// export let homeRoutes = [
+//     {
+//         id: home + "attention",
+//         title: "关注",
+//         path: home + "/attention/:filter",
+//         component: Attention,
+//         exact: true,
+//     },
+//     {
+//         id: home + "my",
+//         title: "我的",
+//         path: home + "/my",
+//         component: My,
+//         exact: true,
+//     },
+//     {
+//         id: home + "notFound",
+//         title: "无资源",
+//         path: "*",
+//         component: Redirect404
+//     }
+// ];
 
 export default routes;
