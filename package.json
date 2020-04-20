@@ -1,6 +1,6 @@
 {
   "name": "hardoor",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Hardoor can automatically generate front-end project templates.",
   "main": "index.js",
   "bin": {
