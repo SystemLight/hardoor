@@ -174,7 +174,7 @@ module.exports = (env, argv) => {
             rules: [
                 {
                     test: /^(?!.*\.module).*\.less$/,
-                    // exclude: /(node_modules|bower_components)/,
+                    exclude: /(node_modules|bower_components)\/(?!antd)/,
                     use: getExtract({
                         fallback: "style-loader",
                         use: ["css-loader", "less-loader"]
@@ -182,7 +182,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /^(.*\.module).less$/,
-                    // exclude: /(node_modules|bower_components)/,
+                    exclude: /(node_modules|bower_components)/,
                     use: getExtract({
                         fallback: "style-loader",
                         use: [
@@ -200,7 +200,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /^(?!.*\.module).*\.css$/,
-                    // exclude: /(node_modules|bower_components)/,
+                    exclude: /(node_modules|bower_components)\/(?!antd)/,
                     use: getExtract({
                         fallback: "style-loader",
                         use: ["css-loader"]
@@ -208,7 +208,7 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /^(.*\.module).css$/,
-                    // exclude: /(node_modules|bower_components)/,
+                    exclude: /(node_modules|bower_components)/,
                     use: getExtract({
                         fallback: "style-loader",
                         use: [
