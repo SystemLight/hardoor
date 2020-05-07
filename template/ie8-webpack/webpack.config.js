@@ -12,6 +12,7 @@ const {
     splitChunks,
     chunksOnAllPages,
     pages,
+    defaultOpt,
     isExtractCss
 } = require("./pages.config");
 
@@ -78,8 +79,8 @@ module.exports = (env, argv) => {
             }
 
             // 初始默认参数
-            let defaultPageOpt = {
-                title: 'my web app',
+            let defaultPageOpt = Object.assign({
+                title: 'my ie web app',
                 keywords: "关键词",
                 description: "描述",
                 iconPath: "./favicon.ico",
@@ -87,7 +88,7 @@ module.exports = (env, argv) => {
                 pageName: "index",
                 template: "./draft/template.html",
                 chunks: []
-            };
+            }, defaultOpt);
 
             switch (typeof page) {
                 case "string":

@@ -45,6 +45,7 @@
 配置说明：
 isExtractCss：boolean-----是否提取样式文件css或less到单独文件当中
 chunksOnAllPages：[string,array]-----多页面应用时配置所有页面都需要包含的chunk
+defaultOpt: [object]-----为所有页面配置默认可选参数，如defaultOpt: {title: "所有图片的默认标题"}
 pages：[string,object,array]-----页面关联的js文件，这个配置关系到打包后生成的html文件数量
 
 例如：

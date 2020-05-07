@@ -11,6 +11,7 @@ const {
     splitChunks,
     chunksOnAllPages,
     pages,
+    defaultOpt,
     isExtractCss
 } = require("./pages.config");
 
@@ -77,7 +78,7 @@ module.exports = (env, argv) => {
             }
 
             // 初始默认参数
-            let defaultPageOpt = {
+            let defaultPageOpt = Object.assign({
                 title: 'my web app',
                 keywords: "关键词",
                 description: "描述",
@@ -86,7 +87,7 @@ module.exports = (env, argv) => {
                 pageName: "index",
                 template: "./draft/template.html",
                 chunks: []
-            };
+            }, defaultOpt);
 
             switch (typeof page) {
                 case "string":
