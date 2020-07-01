@@ -29,6 +29,9 @@ let splitChunks = {
 
 module.exports = {
     splitChunks,
+    defaultOpt:{
+
+    },
     chunksOnAllPages: "react",
     isExtractCss: false,
     pages: "index"

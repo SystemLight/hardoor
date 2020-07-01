@@ -2,6 +2,7 @@ import React from "react";
 import {Redirect} from "react-router-dom";
 
 import Home from "../views/home/home";
+import {My} from "../views/example/example";
 
 
 export let notFound = "/404";
@@ -22,7 +23,7 @@ export function dynamic(imp, Loading) {
 export function RedirectDefaultPage() {
     // 重定向到默认页面
     return (
-        <Redirect to={"/home/attention/"}/>
+        <Redirect to={"/home"}/>
     )
 }
 
@@ -54,14 +55,23 @@ const routes = [
         id: "home", // 子路由homeRoutes
         title: "主页",
         path: "/home",
+        exact: true,
         component: Home,
     },
     {
-        id: "about",
-        title: "关于",
-        path: "/about/:id",
-        component: dynamic(import(/* webpackChunkName: "login" */'../views/about/about')),
-        exact: true,
+        id: "example",
+        title: "举例",
+        path: "/example",
+        component: dynamic(import(/* webpackChunkName: "example" */'../views/example/example')),
+        subRoute: [
+            {
+                id: "home-my",
+                title: "我的",
+                path: "/example/my",
+                component: My,
+                exact: true,
+            }
+        ]
     },
     {
         id: "notFound",
@@ -70,29 +80,5 @@ const routes = [
         component: NotFoundPage
     }
 ];
-
-// let home = "/home";
-// export let homeRoutes = [
-//     {
-//         id: home + "attention",
-//         title: "关注",
-//         path: home + "/attention/:filter",
-//         component: Attention,
-//         exact: true,
-//     },
-//     {
-//         id: home + "my",
-//         title: "我的",
-//         path: home + "/my",
-//         component: My,
-//         exact: true,
-//     },
-//     {
-//         id: home + "notFound",
-//         title: "无资源",
-//         path: "*",
-//         component: Redirect404
-//     }
-// ];
 
 export default routes;

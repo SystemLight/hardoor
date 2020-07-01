@@ -31,6 +31,7 @@
     - [x] redux-thunk
 - [x] axios
 - [x] less
+- [x] antd
 
 ## 项目功能实现
 
@@ -48,20 +49,19 @@
 
 pages针对的是多页面进行配置
 如果需要进行针对单页面，多个路由进行分块加载，请使用routes中的dynamic高阶组件
+更加复杂的页面分割优化：需要进行chunks参数设置，同时要设置splitChunks
+具体设置参考webpack chunks参数，chunks参数可以直接在`pages.config.js`中设置
 
 配置说明：
 isExtractCss：boolean-----是否提取样式文件css或less到单独文件当中
 chunksOnAllPages：[string,array]-----多页面应用时配置所有页面都需要包含的chunk
-defaultOpt: [object]-----为所有页面配置默认可选参数，如defaultOpt: {title: "所有图片的默认标题"}
-pages：[string,object,array]-----页面关联的js文件，这个配置关系到打包后生成的html文件数量
+defaultOpt: [object]-----为所有页面配置默认可选参数，该项等同于page参数，如defaultOpt: {title: "所有图片的默认标题"}
+pages：[string,object,array]-----页面关联的js文件，这个配置关系到打包后生成的html文件数量，对象为page参数
 
 例如：
     只有一个index页面---pages:"index" 或者 pages:{pageName:"index"}
     多个页面，如存在index和about页面---["index","about"]
     如果页面需要特殊设置请传入一个对象---[{pageName:"index"}]
-
-更加复杂的页面分割优化：需要进行chunks参数设置，同时要设置splitChunks
-具体设置参考webpack chunks参数，chunks参数可以直接在`pages.config.js`中设置
 ```
 
 - [ page ]参数

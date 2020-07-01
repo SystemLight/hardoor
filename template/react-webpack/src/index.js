@@ -1,9 +1,11 @@
-import './public.css';
+import './public.less';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from 'react-redux';
+import zhCN from 'antd/es/locale/zh_CN';
+import {ConfigProvider} from 'antd';
 
 import store from "./store/store";
 import routes from "./routes/routes";
@@ -17,7 +19,6 @@ function App(props) {
     //     // 预渲染配置项
     //     document.dispatchEvent(new Event('pre-render'));
     // }, []);
-
     return (
         <>
             <RouteView routes={routes}/>
@@ -27,10 +28,12 @@ function App(props) {
 
 ReactDOM.render(
     // render中尽量不要放置其它组件或page，render中主要放置全局元组件
-    <Provider store={store}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </Provider>
+    <ConfigProvider locale={zhCN}>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+        </Provider>
+    </ConfigProvider>
     , document.getElementById('main')
 );
