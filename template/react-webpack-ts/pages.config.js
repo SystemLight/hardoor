@@ -1,7 +1,7 @@
 let splitChunks = {
     // chunks : all, async, and initial
     chunks: 'async',
-    minSize: 30000,
+    minSize: 30720,
     maxSize: 0,
     minChunks: 1,
     maxAsyncRequests: 6,
@@ -9,20 +9,23 @@ let splitChunks = {
     automaticNameDelimiter: '~',
     automaticNameMaxLength: 30,
     cacheGroups: {
-        vendors: {
-            test: /[\\/]node_modules[\\/]/,
-            priority: -10
-        },
-        default: {
+        common: {
+            name: "common",
             minChunks: 2,
             priority: -20,
             reuseExistingChunk: true
         },
+        vendors: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            priority: -10,
+            chunks: 'all'
+        },
         react: {
-            // Define a chunk named react
-            test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+            test: /[\\/]node_modules[\\/](scheduler|react|react-dom)/,
             name: 'react',
             chunks: 'all',
+            enforce: true,
         }
     }
 };
@@ -32,7 +35,7 @@ module.exports = {
     defaultOpt: {
         title: "React WEB"
     },
-    chunksOnAllPages: "react",
+    chunksOnAllPages: ["common", "vendors", "react"],
     isExtractCss: false,
     pages: {pageName: "index", type: "tsx"}
 };
