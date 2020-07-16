@@ -6,26 +6,32 @@ let splitChunks = {
     minChunks: 1,
     maxAsyncRequests: 6,
     maxInitialRequests: 4,
-    automaticNameDelimiter: '~',
+    automaticNameDelimiter: '-',
     automaticNameMaxLength: 30,
     cacheGroups: {
         common: {
             name: "common",
-            minChunks: 2,
+            chunks: 'all',
             priority: -20,
+            minChunks: 2,
             reuseExistingChunk: true
         },
         vendors: {
             test: /[\\/]node_modules[\\/]/,
             name: "vendors",
+            chunks: 'all',
             priority: -10,
-            chunks: 'all'
         },
         react: {
             test: /[\\/]node_modules[\\/](scheduler|react|react-dom)/,
             name: 'react',
             chunks: 'all',
             enforce: true,
+        },
+        antd: {
+            test: /[\\/]node_modules[\\/](@ant-design|antd)[\\/]/,
+            name: 'antd',
+            chunks: 'all',
         }
     }
 };
@@ -35,7 +41,7 @@ module.exports = {
     defaultOpt: {
         title: "React WEB"
     },
-    chunksOnAllPages: ["common", "vendors", "react"],
+    chunksOnAllPages: ["common", "vendors", "react", "antd"],
     isExtractCss: false,
     pages: {pageName: "index", type: "tsx"}
 };

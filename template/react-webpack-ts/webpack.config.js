@@ -3,17 +3,11 @@ const ph = require("path");
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const PrerenderSPAPlugin = require('prerender-spa-plugin');
 // const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const {
-    splitChunks,
-    chunksOnAllPages,
-    pages,
-    defaultOpt,
-    isExtractCss
-} = require("./pages.config");
+const {splitChunks, chunksOnAllPages, pages, defaultOpt, isExtractCss} = require("./pages.config");
 
 
 function getExtractTextPlugin() {
@@ -82,7 +76,7 @@ module.exports = (env, argv) => {
                 title: 'React WEB',
                 keywords: "关键词",
                 description: "描述",
-                iconPath: "./favicon.ico",
+                iconPath: "/favicon.ico",
                 style: "",
                 pageName: "index",
                 template: "./draft/template.html",
@@ -164,6 +158,10 @@ module.exports = (env, argv) => {
         },
         devServer: getDevServer,
         optimization: {splitChunks: splitChunks},
+        performance: {
+            maxAssetSize: 3 * 1024 * 1024,
+            maxEntrypointSize: 3 * 1024 * 1024
+        },
         entry: getEntry(pages),
         output: {
             filename: "js/[name].bundle.js",

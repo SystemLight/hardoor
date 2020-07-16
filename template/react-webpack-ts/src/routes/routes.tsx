@@ -1,5 +1,5 @@
 import React, {ReactElement, ComponentType} from "react";
-import {Redirect} from "react-router-dom";
+import {Redirect, useHistory} from "react-router-dom";
 
 import Example, {My} from "../views/example";
 
@@ -17,6 +17,7 @@ export interface ParentRoutesBasic extends RoutesBasic {
 
 export type routesType = Array<ParentRoutesBasic>;
 
+// 404：URL地址
 export let notFound: string = "/404";
 
 // 获取子路由
@@ -48,6 +49,7 @@ export function dynamic(imp: Promise<{ default: ComponentType }>, Loading?: Reac
 // 404页面
 export function NotFoundPage() {
 
+
     return (
         <div>
             404:Not Found
@@ -55,6 +57,25 @@ export function NotFoundPage() {
     );
 }
 
+// 路由返回上一级
+export function BackLastPage(props: { children: ReactElement | string }) {
+    let {children} = props;
+
+    let rHistory = useHistory();
+
+    const onClick = () => {
+        rHistory.goBack();
+    }
+
+
+    return (
+        <a onClick={onClick}>
+            {children}
+        </a>
+    )
+}
+
+// 路由表
 const routes: routesType = [
     {
         id: "index",

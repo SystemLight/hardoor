@@ -12,7 +12,7 @@ import routes from "./routes/routes";
 import RouteView from "./routes/routeView";
 
 
-function App(){
+function App() {
     // App组件为全局唯一组件，全局根组件
 
     // useEffect(function () {
@@ -22,9 +22,9 @@ function App(){
 
 
     return (
-        <>
+        <React.StrictMode>
             <RouteView routes={routes}/>
-        </>
+        </React.StrictMode>
     );
 }
 
