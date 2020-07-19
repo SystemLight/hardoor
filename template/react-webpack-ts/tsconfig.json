@@ -21,6 +21,12 @@
     "skipLibCheck": true,
     "removeComments": false,
     "sourceMap": false,
-    "noEmit": false
+    "noEmit": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   }
 }

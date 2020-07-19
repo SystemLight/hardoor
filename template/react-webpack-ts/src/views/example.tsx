@@ -2,36 +2,34 @@ import React, {memo} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {createSelector} from "reselect";
 
-import EditTable, {Item} from "../component/editTable";
-import RouteView from "../routes/routeView";
-import {subRoute} from "../routes/routes";
-import {DispatchReducerAction, reducerState} from "../store/reducer/reducer";
-import {Reducers} from "../store/store";
-
+import EditTable, {Item} from "@/component/editTable";
+import RouteView from "@/routes/routeView";
+import {subRoute} from "@/routes/routes";
+import {DispatchReducerAction, reducerState} from "@/store/reducer/reducer";
+import {Reducers} from "@/store/store";
 
 const selector = createSelector<Reducers, reducerState, string>(
-    state => {
+    (state) => {
         return state.reducer;
     },
-    reducer => {
+    (reducer) => {
         return reducer.example;
     }
 );
 
-export let My = memo(function () {
-    console.log("my update")
+export const My = memo(function () {
+    console.log("my update");
 
     return (<div>example: 当前时间</div>);
 }, () => true);
 
 export default function Example() {
-    let dispatch = useDispatch<DispatchReducerAction>();
-    let exampleText = useSelector(selector);
+    const dispatch = useDispatch<DispatchReducerAction>();
+    const exampleText = useSelector(selector);
 
     const onClick = () => {
         dispatch({type: "TEST_ABOUT"});
-    }
-
+    };
 
     return (
         <div>
@@ -50,13 +48,11 @@ for (let i = 0; i < 100; i++) {
         key: i.toString(),
         name: `Edrward ${i}`,
         age: 32,
-        address: `London Park no. ${i}`,
+        address: `London Park no. ${i}`
     });
 }
 
 export function ExampleEditTable() {
-
-
     return (
         <div>
             <EditTable data={originData}/>

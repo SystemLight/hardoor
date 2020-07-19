@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-let req = axios.create({
+const req = axios.create({
     baseURL: "/"
 });
 

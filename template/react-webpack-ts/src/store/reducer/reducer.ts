@@ -12,12 +12,9 @@ export type reducerState = {
 
 export type DispatchReducerAction = Dispatch<reducerAction>;
 
-
 export default function reducer(state: reducerState = {
     example: "test"
 }, action: reducerAction) {
-
-
     switch (action.type) {
         case "TEST_ABOUT":
             return {
