@@ -7,8 +7,8 @@ import {Provider} from "react-redux";
 import {ConfigProvider} from "antd";
 import zhCN from "antd/es/locale/zh_CN";
 
-import store from "@/store/store";
-import routes from "@/routes/routes";
+import store from "@/store";
+import index from "@/routes";
 import RouteView from "@/routes/routeView";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
 
     return (
         <React.StrictMode>
-            <RouteView routes={routes}/>
+            <RouteView routes={index}/>
         </React.StrictMode>
     );
 }

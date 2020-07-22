@@ -1,32 +1,18 @@
-import {Dispatch} from "redux";
+import {ReducerState, ReducerAction} from "@/types/store";
 
-export type reducerType = "TEST_ABOUT" | "TEST_OTHER" | string;
-
-export type reducerAction = {
-    type: reducerType
-};
-
-export type reducerState = {
-    example: string
-};
-
-export type DispatchReducerAction = Dispatch<reducerAction>;
-
-export default function reducer(state: reducerState = {
-    example: "test"
-}, action: reducerAction) {
+export default function reducer(state: ReducerState = {
+    data: "test"
+}, action: ReducerAction): ReducerState {
     switch (action.type) {
-        case "TEST_ABOUT":
+        case "DATE":
             return {
-                example: new Date().getTime().toString()
+                data: new Date().getTime().toString()
             };
-        case "TEST_OTHER":
+        case "OTHER":
             return {
-                example: "TEST_ABOUT"
+                data: "其它数据"
             };
         default:
-            return {
-                example: "test"
-            };
+            return state;
     }
 }

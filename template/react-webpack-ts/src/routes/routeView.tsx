@@ -1,11 +1,7 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
 
-import {RoutesBasic} from "@/routes/routes";
-
-export type RouteViewProps = {
-    routes?: RoutesBasic[]
-}
+import {RouteViewProps} from "@/types/routes";
 
 export default function RouteView(props: RouteViewProps) {
     const {routes} = props;

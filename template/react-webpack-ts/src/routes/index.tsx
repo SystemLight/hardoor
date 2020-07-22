@@ -1,29 +1,16 @@
-import React from "react";
+import React, {ComponentType, ReactNode} from "react";
 import {Redirect, useHistory} from "react-router-dom";
 
+import {routesType} from "@/types/routes";
 import Example, {My} from "@/views/example";
-
-export interface RoutesBasic {
-    id: string,
-    title: string,
-    path: string | Array<string>,
-    exact?: boolean,
-    component: React.ComponentType
-}
-
-export interface ParentRoutesBasic extends RoutesBasic {
-    subRoute?: Array<RoutesBasic>
-}
-
-export type routesType = Array<ParentRoutesBasic>;
 
 // 404：URL地址
 export const notFound: string = "/404";
 
-// 获取子路由
-export function subRoute(name: string) {
-    const result = routes.find((v) => {
-        return v.id === name;
+// 根据父路由id，索引出子路由
+export function subRoute(routeID: string) {
+    const result = index.find((v) => {
+        return v.id === routeID;
     });
 
     if (result) {
@@ -34,10 +21,7 @@ export function subRoute(name: string) {
 }
 
 // 高阶组件，用于异步加载组件，这样可以让不同路由地址的组件分开加载
-export function dynamic(
-    imp: Promise<{ default: React.ComponentType }>,
-    Loading?: React.ReactElement
-): React.ComponentType {
+export function dynamic(imp: Promise<{ default: ComponentType }>, Loading?: ReactNode): ComponentType {
     return () => {
         return (
             <React.Suspense fallback={Loading || <></>}>
@@ -56,8 +40,8 @@ export function NotFoundPage() {
     );
 }
 
-// 路由返回上一级
-export function BackLastPage(props: { children: React.ReactElement | string }) {
+// 点击返回上一级路由组件
+export function BackLastPage(props: { children: ReactNode }) {
     const {children} = props;
 
     const rHistory = useHistory();
@@ -74,7 +58,7 @@ export function BackLastPage(props: { children: React.ReactElement | string }) {
 }
 
 // 路由表
-const routes: routesType = [
+const index: routesType = [
     {
         id: "index",
         title: "主页",
@@ -112,4 +96,4 @@ const routes: routesType = [
     }
 ];
 
-export default routes;
+export default index;
