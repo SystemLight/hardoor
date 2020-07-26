@@ -1,16 +1,17 @@
 import React from "react";
 import {Switch, Route} from "react-router-dom";
 
-import {RouteViewProps} from "@/types/routes";
+import {IRouteViewProps} from "@/types/routes";
 
-export default function RouteView(props: RouteViewProps) {
+export default function RouteView(props: IRouteViewProps) {
     const {routes} = props;
 
     return (
         <Switch>
             {routes ? routes.map((r) => {
                 return (
-                    <Route key={r.id} path={r.path} exact={r.exact} component={r.component}/>
+                    // eslint-disable-next-line react/jsx-key
+                    <Route {...r}/>
                 );
             }) : ""}
         </Switch>

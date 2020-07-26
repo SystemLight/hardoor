@@ -4,20 +4,20 @@ import {ComponentType} from "react";
 // 定义规范，type定义类型小写字母开头，结尾需要有Type进行命名
 // 尽量使用接口进行类型定义，接口定义名称大写字母开头
 
-export interface RoutesBasic {
-    id: string,
+export interface IRoutesBasic {
+    key: string,
     title: string,
     path: string | Array<string>,
     exact?: boolean,
     component: ComponentType
 }
 
-export interface ParentRoutesBasic extends RoutesBasic {
-    subRoute?: Array<RoutesBasic>
+export interface IParentRoutesBasic extends IRoutesBasic {
+    subRoute?: Array<IRoutesBasic>
 }
 
-export type routesType = Array<ParentRoutesBasic>;
+export type IRoutes = Array<IParentRoutesBasic>;
 
-export interface RouteViewProps {
-    routes?: RoutesBasic[]
+export interface IRouteViewProps {
+    routes?: IRoutesBasic[]
 }

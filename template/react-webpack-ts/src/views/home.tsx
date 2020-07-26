@@ -1,19 +1,13 @@
-import React, {ReactNode, useState} from "react";
-import {Row, Col} from "antd";
+import React from "react";
+import {Link} from "react-router-dom";
+import {Button} from "antd";
 
 export default function Home() {
-    const [panel, setPanel] = useState<ReactNode>(null);
-
-    const onClick = () => {
-        setPanel(React.createElement(Row, {}, [
-            React.createElement(Col, {span: 3, key: 1})
-        ]));
-    };
-
     return (
-        <div>
-            <div>{panel}</div>
-            <button onClick={onClick}>增加自定义组件</button>
+        <div style={{textAlign: "center", paddingTop: 20}}>
+            <Link to={"/example"}>
+                <Button type={"primary"}>跳转到示例页面</Button>
+            </Link>
         </div>
     );
 }

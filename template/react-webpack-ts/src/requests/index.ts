@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const req = axios.create({
+export const req = axios.create({
     baseURL: "/"
 });
 

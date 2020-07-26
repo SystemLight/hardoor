@@ -18,9 +18,9 @@ function App() {
     // }, []);
 
     return (
-        <React.StrictMode>
+        <>
             <RouteView routes={index}/>
-        </React.StrictMode>
+        </>
     );
 }
 
@@ -35,5 +35,3 @@ ReactDOM.render(
     </ConfigProvider>
     , document.getElementById("main")
 );
-
-export {};

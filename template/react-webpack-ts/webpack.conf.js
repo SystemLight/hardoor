@@ -1,20 +1,22 @@
 const ph = require("path");
 
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserJSPlugin = require("terser-webpack-plugin");
 // const PrerenderSPAPlugin = require('prerender-spa-plugin');
 // const Renderer = PrerenderSPAPlugin.PuppeteerRenderer;
 
 const {splitChunks, chunksOnAllPages, pages, defaultOpt, isExtractCss} = require("./pages.config");
 
-
 function getExtractTextPlugin() {
     if (isExtractCss) {
         return [
-            new ExtractTextPlugin({
-                filename: "css/[name].style.css"
+            new MiniCssExtractPlugin({
+                filename: "css/[name].css",
+                chunkFilename: "css/[name].css"
             })
         ];
     }
@@ -23,7 +25,7 @@ function getExtractTextPlugin() {
 
 function getExtract(opt) {
     if (isExtractCss) {
-        return ExtractTextPlugin.extract(opt);
+        return [MiniCssExtractPlugin.loader, ...opt.use];
     } else {
         opt.use.unshift(opt.fallback);
         return [...opt.use];
@@ -31,37 +33,37 @@ function getExtract(opt) {
 }
 
 module.exports = (env, argv) => {
-    let workEnv = argv.mode;
+    const workEnv = argv.mode;
 
-    let getMinify = workEnv === "development" ? undefined : {
+    const getMinify = workEnv === "development" ? undefined : {
         removeComments: true,
         collapseWhitespace: true,
         minifyCSS: true
     };
 
-    let getDevServer = {
-        contentBase: './dist',
-        index: 'index.html',
-        openPage: '',
+    const getDevServer = {
+        contentBase: "./dist",
+        index: "index.html",
+        openPage: "",
         inline: true,
         historyApiFallback: true,
         hot: false,
         hotOnly: false,
         open: true,
         proxy: {
-            '/proxy':
+            "/proxy":
                 {
-                    target: 'https://cnodejs.org/',
+                    target: "https://cnodejs.org/",
                     secure: true,
-                    pathRewrite: {'^/proxy': ''},
+                    pathRewrite: {"^/proxy": ""},
                     changeOrigin: true,
                     cookieDomainRewrite: ".cnodejs.org"
                 }
         }
     };
 
-    let getHtmlPage = function (pages) {
-        let htmlArray = [];
+    const getHtmlPage = function (pages) {
+        const htmlArray = [];
         if (!Array.isArray(pages)) {
             pages = [pages];
         }
@@ -73,7 +75,7 @@ module.exports = (env, argv) => {
 
             // 初始默认参数
             let defaultPageOpt = Object.assign({
-                title: 'React WEB',
+                title: "React WEB",
                 keywords: "关键词",
                 description: "描述",
                 iconPath: "/favicon.ico",
@@ -130,12 +132,12 @@ module.exports = (env, argv) => {
         return htmlArray;
     };
 
-    let getEntry = function (pages) {
-        let entryObject = {};
+    const getEntry = function (pages) {
+        const entryObject = {};
         if (!Array.isArray(pages)) {
             pages = [pages];
         }
-        pages.forEach(page => {
+        pages.forEach((page) => {
             let key;
             let type = "js";
             if (typeof page === "string") {
@@ -151,14 +153,17 @@ module.exports = (env, argv) => {
 
     return {
         mode: workEnv,
-        devtool: workEnv === "development" ? 'inline-source-map' : "source-map",
+        devtool: workEnv === "development" ? "inline-source-map" : "source-map",
         context: __dirname,
         resolve: {
             extensions: [".js", ".ts", ".jsx", ".tsx"],
             alias: {"@": ph.join(__dirname, "src")}
         },
         devServer: getDevServer,
-        optimization: {splitChunks: splitChunks},
+        optimization: {
+            splitChunks: splitChunks,
+            minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+        },
         performance: {
             maxAssetSize: 3 * 1024 * 1024,
             maxEntrypointSize: 3 * 1024 * 1024
@@ -187,11 +192,11 @@ module.exports = (env, argv) => {
                         fallback: "style-loader",
                         use: [
                             {
-                                loader: 'css-loader',
+                                loader: "css-loader",
                                 options: {
                                     modules: {
-                                        localIdentName: "[name]-[hash:base64:6]",
-                                    },
+                                        localIdentName: "[name]-[hash:base64:6]"
+                                    }
                                 }
                             },
                             "less-loader"
@@ -213,11 +218,11 @@ module.exports = (env, argv) => {
                         fallback: "style-loader",
                         use: [
                             {
-                                loader: 'css-loader',
+                                loader: "css-loader",
                                 options: {
                                     modules: {
-                                        localIdentName: "[name]-[hash:base64:6]",
-                                    },
+                                        localIdentName: "[name]-[hash:base64:6]"
+                                    }
                                 }
                             }
                         ]
@@ -226,38 +231,42 @@ module.exports = (env, argv) => {
                 {
                     test: /(\.jsx|\.js)$/,
                     exclude: /(node_modules|bower_components)/,
-                    loader: 'babel-loader'
+                    loader: "babel-loader"
                 },
                 {
                     test: /\.tsx?$/,
                     exclude: /(node_modules|bower_components)/,
-                    loader: 'babel-loader!ts-loader'
+                    loader: "babel-loader!ts-loader"
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                     exclude: /(node_modules|bower_components)/,
                     use: [{
-                        loader: 'url-loader',
+                        loader: "url-loader",
                         options: {
                             limit: 8192,
-                            fallback: 'file-loader',
-                            name: 'media/images/[name].[hash:7].[ext]',
-                            publicPath: '/',
+                            fallback: "file-loader",
+                            name: "media/images/[name].[hash:7].[ext]",
+                            publicPath: "/",
                             esModule: false
                         }
                     }]
-                },
+                }
             ]
         },
         plugins: [
             new CleanWebpackPlugin(),
-            new CopyWebpackPlugin([
-                {
-                    from: __dirname + '/public',
-                    to: __dirname + '/dist',
-                    ignore: ['.*']
-                }
-            ]),
+            new CopyWebpackPlugin({
+                patterns: [
+                    {
+                        from: __dirname + "/public",
+                        to: __dirname + "/dist",
+                        globOptions: {
+                            ignore: [".*"]
+                        }
+                    }
+                ]
+            }),
             ...getExtractTextPlugin(),
             // 如果需要预渲染，需要安装插件后，把这段代码注释去掉，并正常引入插件
             // new PrerenderSPAPlugin({
@@ -268,7 +277,7 @@ module.exports = (env, argv) => {
             //         renderAfterDocumentEvent: 'pre-render'
             //     })
             // }),
-            ...getHtmlPage(pages),
+            ...getHtmlPage(pages)
         ]
-    }
+    };
 };

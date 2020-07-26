@@ -1,12 +1,15 @@
-import {ReducerState, ReducerAction} from "@/types/store";
+import {IReducerState, IReducerAction} from "@/types/store";
 
-export default function reducer(state: ReducerState = {
-    data: "test"
-}, action: ReducerAction): ReducerState {
+const _state: IReducerState = {
+    data: "当前时间"
+};
+
+export default function reducer(state: IReducerState = _state, action: IReducerAction): IReducerState {
     switch (action.type) {
         case "DATE":
+            const date = new Date();
             return {
-                data: new Date().getTime().toString()
+                data: `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
             };
         case "OTHER":
             return {

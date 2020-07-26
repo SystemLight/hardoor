@@ -1,18 +1,18 @@
-import {Dispatch} from "redux";
+import {ThunkDispatch} from "redux-thunk";
 
 // reducer 存储纯函数类型定义
-export type reducerActionKeysType = "DATE" | "OTHER";
+export type IReducerActionKeys = "DATE" | "OTHER";
 
-export interface ReducerAction {
-    type: reducerActionKeysType
+export interface IReducerAction {
+    type: IReducerActionKeys
 }
 
-export interface ReducerState {
+export interface IReducerState {
     data: string
 }
 
-export type dispatchReducer = Dispatch<ReducerAction>;
+export type IDispatchReducer = ThunkDispatch<IReducerState, any, IReducerAction>;
 
-export interface Reducers {
-    reducer: ReducerState
+export interface IReducers {
+    reducer: IReducerState
 }

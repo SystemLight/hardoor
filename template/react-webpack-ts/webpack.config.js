@@ -1,6 +1,5 @@
 const ph = require("path");
 
-
 module.exports = {
     context: __dirname,
     resolve: {
