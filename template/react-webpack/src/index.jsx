@@ -18,9 +18,9 @@ function App() {
     // }, []);
 
     return (
-        <React.StrictMode>
+        <>
             <RouteView routes={index}/>
-        </React.StrictMode>
+        </>
     );
 }
 

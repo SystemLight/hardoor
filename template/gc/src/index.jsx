@@ -1,27 +1,25 @@
-import './public.less';
+import "./public.less";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
-import {Provider} from 'react-redux';
-import zhCN from 'antd/es/locale/zh_CN';
-import {ConfigProvider} from 'antd';
+import {Provider} from "react-redux";
+import {ConfigProvider} from "antd";
+import zhCN from "antd/es/locale/zh_CN";
 
-import store from "./store/store";
-import routes from "./routes/routes";
-import RouteView from "./routes/routeView";
+import store from "@/store";
+import index from "@/routes";
+import RouteView from "@/routes/routeView";
 
-
-function App(props) {
-    // App组件为全局唯一组件，全局根组件
-
+function App() {
     // useEffect(function () {
     //     // 预渲染配置项
     //     document.dispatchEvent(new Event('pre-render'));
     // }, []);
+
     return (
         <>
-            <RouteView routes={routes}/>
+            <RouteView routes={index}/>
         </>
     );
 }
@@ -35,5 +33,5 @@ ReactDOM.render(
             </BrowserRouter>
         </Provider>
     </ConfigProvider>
-    , document.getElementById('main')
+    , document.getElementById("main")
 );

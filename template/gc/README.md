@@ -1,4 +1,4 @@
-# react-webpack
+# react-webpack-as
 
 一个webpack配置的react项目模板，继承了一组生态进行快速项目结构搭建。
 
