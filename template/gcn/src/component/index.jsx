@@ -4,7 +4,7 @@ import {
     InputNumber, Checkbox,
     Form, Select, DatePicker,
     Typography, ImageWrap, InputButton,
-    Button
+    Button, DateStrRange, DateStrPicker
 } from "@/lib";
 
 export default function Trial(p) {
@@ -51,6 +51,17 @@ export default function Trial(p) {
                 <Form.Item label={"标题"}>
                     <DatePicker.RangePicker value={data["g"]} style={{width: "100%"}}
                                             onChange={(val) => (onChange("g", val))} {...props["g"]}/>
+                </Form.Item>
+            </Col>
+            <Col span={8}>
+                <Form.Item label={"标题"}>
+                    <DatePicker name={"f1"} value={data["f1"]} onChange={onChange} {...props["f1"]}/>
+                </Form.Item>
+            </Col>
+            <Col span={8}>
+                <Form.Item label={"标题"}>
+                    <DateStrRange name={"g1,g2"} value={[data["g1"], data["g2"]]}
+                                  onChange={onChange} {...props["g1,g2"]}/>
                 </Form.Item>
             </Col>
             <Col span={8}>
