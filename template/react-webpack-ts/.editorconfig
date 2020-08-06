@@ -12,3 +12,7 @@ trim_trailing_whitespace = true
 [*.{py, js, jsx, ts, tsx}]
 indent_style = space
 indent_size = 4
+
+[*.json]
+indent_style = space
+indent_size = 2

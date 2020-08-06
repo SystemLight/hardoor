@@ -19,7 +19,7 @@
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "removeComments": true,
+    "removeComments": false,
     "sourceMap": false,
     "noEmit": false,
     "outDir": "./dist/",

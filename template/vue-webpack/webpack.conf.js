@@ -1,5 +1,6 @@
 const ph = require("path");
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -42,7 +43,7 @@ module.exports = (env, argv) => {
     };
 
     const getDevServer = {
-        contentBase: "./dist",
+        contentBase: "./build",
         index: "index.html",
         openPage: "",
         inline: true,
@@ -75,7 +76,7 @@ module.exports = (env, argv) => {
 
             // 初始默认参数
             let defaultPageOpt = Object.assign({
-                title: "React WEB",
+                title: "VUE WEB",
                 keywords: "关键词",
                 description: "描述",
                 iconPath: "/favicon.ico",
@@ -156,8 +157,13 @@ module.exports = (env, argv) => {
         devtool: workEnv === "development" ? "inline-source-map" : "source-map",
         context: __dirname,
         resolve: {
-            extensions: [".js", ".ts", ".jsx", ".tsx"],
-            alias: {"@": ph.join(__dirname, "src")}
+            extensions: ['.js', '.vue'],
+            alias: {
+                '@': ph.resolve('src'),
+                '@views': ph.resolve('src/views'),
+                '@comp': ph.resolve('src/components'),
+                '@utils': ph.resolve('src/utils')
+            }
         },
         devServer: getDevServer,
         optimization: {
@@ -171,7 +177,7 @@ module.exports = (env, argv) => {
         entry: getEntry(pages),
         output: {
             filename: "js/[name].bundle.js",
-            path: ph.resolve(__dirname, "dist"),
+            path: ph.resolve(__dirname, "build"),
             publicPath: "/"
         },
         externals: {},
@@ -229,14 +235,17 @@ module.exports = (env, argv) => {
                     })
                 },
                 {
-                    test: /(\.jsx|\.js)$/,
+                    test: /\.js$/,
                     exclude: /(node_modules|bower_components)/,
                     loader: "babel-loader"
                 },
                 {
-                    test: /\.tsx?$/,
-                    exclude: /(node_modules|bower_components)/,
-                    loader: "babel-loader!ts-loader"
+                    test: /\.vue$/,
+                    loader: 'vue-loader',
+                    options: {
+                        loaders: {}
+                        // other vue-loader options go here
+                    }
                 },
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -255,12 +264,13 @@ module.exports = (env, argv) => {
             ]
         },
         plugins: [
+            new VueLoaderPlugin(),
             new CleanWebpackPlugin(),
             new CopyWebpackPlugin({
                 patterns: [
                     {
                         from: __dirname + "/public",
-                        to: __dirname + "/dist",
+                        to: __dirname + "/build",
                         globOptions: {
                             ignore: [".*"]
                         }
@@ -270,7 +280,7 @@ module.exports = (env, argv) => {
             ...getExtractTextPlugin(),
             // 如果需要预渲染，需要安装插件后，把这段代码注释去掉，并正常引入插件
             // new PrerenderSPAPlugin({
-            //     staticDir: ph.resolve(__dirname, "dist"),
+            //     staticDir: ph.resolve(__dirname, "build"),
             //     routes: ['/', '/about'],
             //     renderer: new Renderer({
             //         headless: false,

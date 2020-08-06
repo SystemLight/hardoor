@@ -42,7 +42,7 @@ module.exports = (env, argv) => {
     };
 
     const getDevServer = {
-        contentBase: "./dist",
+        contentBase: "./build",
         index: "index.html",
         openPage: "",
         inline: true,
@@ -171,7 +171,7 @@ module.exports = (env, argv) => {
         entry: getEntry(pages),
         output: {
             filename: "js/[name].bundle.js",
-            path: ph.resolve(__dirname, "dist"),
+            path: ph.resolve(__dirname, "build"),
             publicPath: "/"
         },
         externals: {},
@@ -260,7 +260,7 @@ module.exports = (env, argv) => {
                 patterns: [
                     {
                         from: __dirname + "/public",
-                        to: __dirname + "/dist",
+                        to: __dirname + "/build",
                         globOptions: {
                             ignore: [".*"]
                         }
@@ -270,7 +270,7 @@ module.exports = (env, argv) => {
             ...getExtractTextPlugin(),
             // 如果需要预渲染，需要安装插件后，把这段代码注释去掉，并正常引入插件
             // new PrerenderSPAPlugin({
-            //     staticDir: ph.resolve(__dirname, "dist"),
+            //     staticDir: ph.resolve(__dirname, "build"),
             //     routes: ['/', '/about'],
             //     renderer: new Renderer({
             //         headless: false,

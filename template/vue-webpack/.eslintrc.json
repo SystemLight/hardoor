@@ -1,37 +1,22 @@
 {
-  "root": true,
   "env": {
     "browser": true,
     "es2020": true
   },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 11,
-    "sourceType": "module"
-  },
   "extends": [
-    "plugin:react/recommended",
+    "plugin:vue/essential",
     "google"
   ],
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module"
+  },
   "plugins": [
-    "react",
+    "vue",
     "@typescript-eslint"
   ],
   "rules": {
-    "react/display-name": [
-      "off",
-      {
-        "ignoreTranspilerName": false
-      }
-    ],
     "quotes": [
       "error",
       "double"
