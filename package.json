@@ -1,18 +1,7 @@
 {
   "name": "hardoor",
   "version": "1.5.2",
-  "description": "Hardoor can automatically generate front-end project templates.",
-  "main": "index.js",
-  "bin": {
-    "hardoor": "./bin/hardoor.js"
-  },
-  "scripts": {
-    "test": "echo \"hardoor is good\" && exit 0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SystemLight/hardoor.git"
-  },
+  "private": true,
   "keywords": [
     "hardoor",
     "cli-app",
@@ -32,15 +21,27 @@
     "生成工具",
     "生成web项目"
   ],
+  "description": "Hardoor can automatically generate front-end project templates.",
+  "main": "bin/hardoor.js",
+  "bin": {
+    "hardoor": "bin/hardoor.js"
+  },
   "author": "SystemLight",
   "license": "MIT",
+  "homepage": "https://github.com/SystemLight/hardoor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SystemLight/hardoor.git"
+  },
   "bugs": {
     "url": "https://github.com/SystemLight/hardoor/issues"
   },
-  "homepage": "https://github.com/SystemLight/hardoor#readme",
+  "engines": {
+    "node": ">=16.15.0"
+  },
   "dependencies": {
-    "commander": "^4.0.1",
-    "fs-extra": "^8.1.0",
-    "ora": "^4.0.3"
+    "commander": "^9.3.0",
+    "fs-extra": "^10.1.0",
+    "ora": "^6.1.2"
   }
 }

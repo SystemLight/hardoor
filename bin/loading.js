@@ -1,6 +1,5 @@
 const ora = require('ora');
 
-
 let timer;
 const startTime = new Date();
 const spinner = ora({

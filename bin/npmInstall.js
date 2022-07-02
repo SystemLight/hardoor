@@ -1,6 +1,6 @@
 const child_process = require('child_process');
-const loading = require("./loading");
 
+const loading = require("./loading");
 
 function install(options) {
     let {packageName, callback} = options || {};
@@ -19,6 +19,5 @@ function install(options) {
         callback && callback();
     });
 }
-
 
 module.exports = {install};

@@ -1,22 +1,21 @@
 #!/usr/bin/env node
 
 const commander = require("commander");
-const fs = require("fs-extra");
+const fse = require("fs-extra");
 const ph = require("path");
 const {install} = require("./npmInstall");
 const hardoor = require("../package.json");
-
 
 let childFlag = false;
 
 function installAction(template, {block, auto, force, path}) {
     let searchPath = block ? "../block/" : "../template/";
     let sourceDir = ph.join(__dirname, searchPath);
-    let dir = fs.readdirSync(sourceDir);
+    let dir = fse.readdirSync(sourceDir);
     if (dir.includes(template)) {
         let sourcePath = ph.join(sourceDir, block ? template + "/content" : template);
         let targetPath = ph.join(process.cwd(), path || "");
-        fs.copy(sourcePath, targetPath, {overwrite: !!force, errorOnExist: !!!force})
+        fse.copy(sourcePath, targetPath, {overwrite: !!force, errorOnExist: !!!force})
             .then(function () {
                 console.log("Generate template successfully");
                 if (block) {
@@ -24,7 +23,7 @@ function installAction(template, {block, auto, force, path}) {
                     afterScript(install);
                 } else {
                     process.chdir(targetPath);
-                    fs.rename("./gitignore", "./.gitignore");
+                    fse.rename("./gitignore", "./.gitignore");
                 }
                 if (auto && !block) {
                     install();
@@ -40,7 +39,7 @@ function installAction(template, {block, auto, force, path}) {
 function listAction({block}) {
     let searchPath = block ? "../block/" : "../template/";
     let templatePath = ph.join(__dirname, searchPath);
-    let templates = fs.readdirSync(templatePath);
+    let templates = fse.readdirSync(templatePath);
     templates.forEach(template => {
         let description = require(ph.join(templatePath, template, "package.json")).description;
         console.log("[" + template + "]", "---", description, "\n")
